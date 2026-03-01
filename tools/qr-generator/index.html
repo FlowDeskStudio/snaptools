@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator  EFree Online QR Maker | SnapTools</title>
+    <meta name="description"
+        content="Generate QR codes instantly from any text or URL. Customize size, colors, and download as PNG. Free, fast, no sign-up required.">
+    <meta name="keywords" content="QR code generator, free QR code, QR maker, create QR code online">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://snaptools.app/tools/qr-generator/">
+    <meta property="og:title" content="Free QR Code Generator  ESnapTools">
+    <meta property="og:description" content="Generate QR codes instantly from any text or URL. Free and no sign-up.">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="bg-gradient-orbs"></div>
+    <div class="page-wrapper">
+
+        <!-- Header -->
+        <header class="site-header">
+            <div class="container">
+                <a href="/" class="logo">
+                    <div class="logo-icon">⚡</div>
+                    <span class="logo-text">SnapTools</span>
+                </a>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tools/qr-generator/" class="active">QR Generator</a></li>
+                        <li><a href="/tools/json-formatter/">JSON Formatter</a></li>
+                        <li><a href="/tools/character-counter/">Character Counter</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Page Header -->
+            <div class="tool-page-header">
+                <div class="container">
+                    <div class="breadcrumb">
+                        <a href="/">Home</a> <span>/</span> <span>QR Code Generator</span>
+                    </div>
+                    <h1>QR Code Generator</h1>
+                    <p>Enter any text or URL and get a QR code instantly. Download as PNG.</p>
+                </div>
+            </div>
+
+            <!-- Ad Slot -->
+            <div class="container" style="max-width: 900px;">
+                <div class="ad-slot" id="ad-qr-top">Ad Space</div>
+            </div>
+
+            <!-- Tool -->
+            <div class="tool-container">
+                <div class="tool-box">
+                    <div class="form-group">
+                        <label class="form-label" for="qr-input">Text or URL</label>
+                        <input type="text" id="qr-input" class="form-input"
+                            placeholder="https://example.com or any text..." value="https://snaptools.app">
+                    </div>
+
+                    <div class="options-row">
+                        <div class="form-group">
+                            <label class="form-label" for="qr-size">Size (px)</label>
+                            <select id="qr-size" class="form-select">
+                                <option value="128">128 ÁE128</option>
+                                <option value="256" selected>256 ÁE256</option>
+                                <option value="512">512 ÁE512</option>
+                                <option value="1024">1024 ÁE1024</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="qr-fg">Foreground</label>
+                            <input type="color" id="qr-fg" class="form-input" value="#ffffff"
+                                style="height:44px; padding:4px;">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="qr-bg">Background</label>
+                            <input type="color" id="qr-bg" class="form-input" value="#0a0a0f"
+                                style="height:44px; padding:4px;">
+                        </div>
+                    </div>
+
+                    <div style="margin-top: var(--space-lg);">
+                        <button id="qr-generate" class="btn btn-primary btn-lg" style="width:100%;">Generate QR
+                            Code</button>
+                    </div>
+                </div>
+
+                <!-- Output -->
+                <div class="tool-box" id="qr-output-box" style="display:none;">
+                    <div class="qr-output">
+                        <canvas id="qr-canvas"></canvas>
+                        <div class="btn-group">
+                            <button id="qr-download" class="btn btn-primary">⬁EDownload PNG</button>
+                            <button id="qr-copy" class="btn btn-secondary">📋 Copy to Clipboard</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ad Slot -->
+            <div class="container" style="max-width: 900px;">
+                <div class="ad-slot" id="ad-qr-bottom">Ad Space</div>
+            </div>
+
+            <!-- SEO Content -->
+            <div class="tool-container">
+                <div class="tool-box"
+                    style="color: var(--text-secondary); font-size: var(--font-size-sm); line-height: 1.8;">
+                    <h2
+                        style="font-size: var(--font-size-lg); color: var(--text-primary); margin-bottom: var(--space-md);">
+                        About This Tool</h2>
+                    <p>This free QR Code Generator lets you create QR codes from any text, URL, email, phone number, or
+                        Wi-Fi credentials. All processing happens in your browser  Eyour data is never sent to any
+                        server.</p>
+                    <p style="margin-top: var(--space-md);">QR codes are scannable by any smartphone camera. They're
+                        commonly used for sharing links, contact information, and promotional materials. Generate
+                        unlimited QR codes for free.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p class="footer-text">© 2026 SnapTools. All tools are free and open for everyone.</p>
+                    <ul class="footer-links">
+                        <li><a href="/privacy.html">Privacy</a></li>
+                        <li><a href="/terms.html">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script type="module" src="/js/qr-generator.js"></script>
+</body>
+
+</html>

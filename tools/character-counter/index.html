@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Counter  EWords, Sentences & Paragraphs | SnapTools</title>
+    <meta name="description"
+        content="Count characters, words, sentences, and paragraphs in real time. See reading time and keyword density. Free online tool, no sign-up.">
+    <meta name="keywords"
+        content="character counter, word counter, text counter, character count online, word count tool">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://snaptools.app/tools/character-counter/">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .limit-bar {
+            height: 4px;
+            background: var(--bg-input);
+            border-radius: var(--radius-full);
+            margin-top: var(--space-sm);
+            overflow: hidden;
+        }
+
+        .limit-bar-fill {
+            height: 100%;
+            background: var(--accent-gradient);
+            border-radius: var(--radius-full);
+            transition: width var(--transition-base);
+        }
+
+        .limit-bar-fill.warning {
+            background: var(--warning);
+        }
+
+        .limit-bar-fill.danger {
+            background: var(--error);
+        }
+
+        .limit-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: var(--font-size-xs);
+            color: var(--text-muted);
+            margin-top: var(--space-xs);
+        }
+
+        .keyword-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+        }
+
+        .keyword-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-xs) var(--space-md);
+            background: var(--bg-glass);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-xs);
+            color: var(--text-secondary);
+        }
+
+        .keyword-tag .keyword-count {
+            background: var(--accent-primary);
+            color: white;
+            padding: 1px 6px;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-gradient-orbs"></div>
+    <div class="page-wrapper">
+        <header class="site-header">
+            <div class="container">
+                <a href="/" class="logo">
+                    <div class="logo-icon">⚡</div>
+                    <span class="logo-text">SnapTools</span>
+                </a>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tools/qr-generator/">QR Generator</a></li>
+                        <li><a href="/tools/json-formatter/">JSON Formatter</a></li>
+                        <li><a href="/tools/character-counter/" class="active">Character Counter</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="tool-page-header">
+                <div class="container">
+                    <div class="breadcrumb">
+                        <a href="/">Home</a> <span>/</span> <span>Character Counter</span>
+                    </div>
+                    <h1>Character Counter</h1>
+                    <p>Count characters, words, sentences, and more  Ein real time.</p>
+                </div>
+            </div>
+
+            <div class="container" style="max-width: 900px;">
+                <div class="ad-slot" id="ad-counter-top">Ad Space</div>
+            </div>
+
+            <div class="tool-container">
+                <!-- Stats -->
+                <div class="stats-bar" id="stats-bar">
+                    <div class="stat-item">
+                        <span class="stat-label">Characters</span>
+                        <span class="stat-value" id="stat-chars">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Words</span>
+                        <span class="stat-value" id="stat-words">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Sentences</span>
+                        <span class="stat-value" id="stat-sentences">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Paragraphs</span>
+                        <span class="stat-value" id="stat-paragraphs">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Reading Time</span>
+                        <span class="stat-value" id="stat-reading">0s</span>
+                    </div>
+                </div>
+
+                <!-- Input -->
+                <div class="tool-box">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label" for="counter-input">Type or paste your text</label>
+                        <textarea id="counter-input" class="form-textarea" rows="12"
+                            placeholder="Start typing or paste your text here..."></textarea>
+                    </div>
+
+                    <!-- Character limit bar -->
+                    <div class="form-group" style="margin-top: var(--space-lg);">
+                        <label class="form-label" for="char-limit">Character Limit (optional)</label>
+                        <div class="options-row">
+                            <select id="char-limit" class="form-select">
+                                <option value="0">No limit</option>
+                                <option value="140">Twitter/X (140)</option>
+                                <option value="280">Twitter/X Extended (280)</option>
+                                <option value="500">Bluesky / Mastodon (500)</option>
+                                <option value="2200">Instagram (2,200)</option>
+                                <option value="5000">Facebook (5,000)</option>
+                                <option value="160">Meta Description (160)</option>
+                                <option value="60">Title Tag (60)</option>
+                            </select>
+                            <input type="number" id="char-limit-custom" class="form-input" placeholder="Custom limit"
+                                min="1" style="max-width: 150px;">
+                        </div>
+                        <div class="limit-bar" id="limit-bar" style="display: none;">
+                            <div class="limit-bar-fill" id="limit-bar-fill"></div>
+                        </div>
+                        <div class="limit-info" id="limit-info" style="display: none;">
+                            <span id="limit-used">0 / 0</span>
+                            <span id="limit-remaining">0 remaining</span>
+                        </div>
+                    </div>
+
+                    <div class="btn-group" style="margin-top: var(--space-lg);">
+                        <button id="counter-copy" class="btn btn-secondary">📋 Copy Text</button>
+                        <button id="counter-clear" class="btn btn-secondary">🗑 Clear</button>
+                    </div>
+                </div>
+
+                <!-- Top Keywords -->
+                <div class="tool-box" id="keywords-box" style="display:none;">
+                    <span class="form-label">Top Keywords</span>
+                    <div class="keyword-list" id="keyword-list"></div>
+                </div>
+            </div>
+
+            <div class="container" style="max-width: 900px;">
+                <div class="ad-slot" id="ad-counter-bottom">Ad Space</div>
+            </div>
+
+            <div class="tool-container">
+                <div class="tool-box"
+                    style="color: var(--text-secondary); font-size: var(--font-size-sm); line-height: 1.8;">
+                    <h2
+                        style="font-size: var(--font-size-lg); color: var(--text-primary); margin-bottom: var(--space-md);">
+                        About This Tool</h2>
+                    <p>This free Character Counter gives you real-time statistics about your text including character
+                        count, word count, sentence count, paragraph count, and estimated reading time. It also shows
+                        your top keywords for SEO analysis.</p>
+                    <p style="margin-top: var(--space-md);">Use the preset limits for popular social media platforms
+                        like Twitter/X (280 characters), Instagram (2,200), or SEO limits like meta descriptions (160)
+                        and title tags (60). Perfect for writers, bloggers, students, and marketers.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p class="footer-text">© 2026 SnapTools. All tools are free and open for everyone.</p>
+                    <ul class="footer-links">
+                        <li><a href="/privacy.html">Privacy</a></li>
+                        <li><a href="/terms.html">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script type="module" src="/js/character-counter.js"></script>
+</body>
+
+</html>

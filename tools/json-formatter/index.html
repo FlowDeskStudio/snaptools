@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Formatter & Validator  EFree Online Tool | SnapTools</title>
+    <meta name="description"
+        content="Format, beautify, and validate JSON data online for free. Instant syntax highlighting and error detection. No sign-up required.">
+    <meta name="keywords"
+        content="JSON formatter, JSON validator, JSON beautifier, format JSON online, pretty print JSON">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://snaptools.app/tools/json-formatter/">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .json-output {
+            font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+            font-size: var(--font-size-sm);
+            line-height: 1.7;
+            white-space: pre-wrap;
+            word-break: break-all;
+            tab-size: 2;
+            color: var(--text-primary);
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .json-key {
+            color: #a29bfe;
+        }
+
+        .json-string {
+            color: #55efc4;
+        }
+
+        .json-number {
+            color: #fd79a8;
+        }
+
+        .json-boolean {
+            color: #fdcb6e;
+        }
+
+        .json-null {
+            color: #636e72;
+        }
+
+        .json-bracket {
+            color: #dfe6e9;
+        }
+
+        .error-message {
+            color: var(--error);
+            font-size: var(--font-size-sm);
+            padding: var(--space-md);
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 107, 107, 0.2);
+            margin-top: var(--space-md);
+        }
+
+        .error-message .error-line {
+            font-weight: 700;
+            margin-bottom: var(--space-xs);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-gradient-orbs"></div>
+    <div class="page-wrapper">
+        <header class="site-header">
+            <div class="container">
+                <a href="/" class="logo">
+                    <div class="logo-icon">⚡</div>
+                    <span class="logo-text">SnapTools</span>
+                </a>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tools/qr-generator/">QR Generator</a></li>
+                        <li><a href="/tools/json-formatter/" class="active">JSON Formatter</a></li>
+                        <li><a href="/tools/character-counter/">Character Counter</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="tool-page-header">
+                <div class="container">
+                    <div class="breadcrumb">
+                        <a href="/">Home</a> <span>/</span> <span>JSON Formatter</span>
+                    </div>
+                    <h1>JSON Formatter & Validator</h1>
+                    <p>Paste your JSON. Get it formatted, validated, and highlighted instantly.</p>
+                </div>
+            </div>
+
+            <div class="container" style="max-width: 900px;">
+                <div class="ad-slot" id="ad-json-top">Ad Space</div>
+            </div>
+
+            <div class="tool-container">
+                <div class="tool-box">
+                    <div class="form-group">
+                        <label class="form-label" for="json-input">Paste your JSON</label>
+                        <textarea id="json-input" class="form-textarea" rows="10"
+                            placeholder='{"name": "John", "age": 30, "city": "Tokyo"}'></textarea>
+                    </div>
+                    <div class="options-row" style="margin-bottom: var(--space-lg);">
+                        <div class="form-group">
+                            <label class="form-label" for="json-indent">Indentation</label>
+                            <select id="json-indent" class="form-select">
+                                <option value="2" selected>2 Spaces</option>
+                                <option value="4">4 Spaces</option>
+                                <option value="tab">Tab</option>
+                                <option value="0">Minified</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button id="json-format" class="btn btn-primary btn-lg" style="flex:1;">Format JSON</button>
+                        <button id="json-minify" class="btn btn-secondary btn-lg">Minify</button>
+                        <button id="json-clear" class="btn btn-secondary btn-lg">Clear</button>
+                    </div>
+                </div>
+
+                <!-- Output -->
+                <div class="tool-box" id="json-output-box" style="display:none;">
+                    <div
+                        style="display:flex; justify-content:space-between; align-items:center; margin-bottom: var(--space-md);">
+                        <span class="form-label" style="margin:0;" id="json-status"></span>
+                        <button id="json-copy" class="btn btn-secondary"
+                            style="padding: var(--space-xs) var(--space-md); font-size: var(--font-size-xs);">📋
+                            Copy</button>
+                    </div>
+                    <div class="result-area" id="json-result">
+                        <div class="json-output" id="json-output"></div>
+                    </div>
+                    <div id="json-error" class="error-message" style="display:none;"></div>
+                </div>
+            </div>
+
+            <div class="container" style="max-width: 900px;">
+                <div class="ad-slot" id="ad-json-bottom">Ad Space</div>
+            </div>
+
+            <div class="tool-container">
+                <div class="tool-box"
+                    style="color: var(--text-secondary); font-size: var(--font-size-sm); line-height: 1.8;">
+                    <h2
+                        style="font-size: var(--font-size-lg); color: var(--text-primary); margin-bottom: var(--space-md);">
+                        About This Tool</h2>
+                    <p>This free JSON Formatter lets you beautify, format, and validate JSON data. It automatically
+                        detects syntax errors and shows you exactly where the problem is. All processing is done locally
+                        in your browser  Eyour data stays private.</p>
+                    <p style="margin-top: var(--space-md);">JSON (JavaScript Object Notation) is a lightweight
+                        data-interchange format. It's easy for humans to read and write, and easy for machines to parse
+                        and generate. Use this tool to make minified JSON readable or to validate your API responses.
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p class="footer-text">© 2026 SnapTools. All tools are free and open for everyone.</p>
+                    <ul class="footer-links">
+                        <li><a href="/privacy.html">Privacy</a></li>
+                        <li><a href="/terms.html">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script type="module" src="/js/json-formatter.js"></script>
+</body>
+
+</html>

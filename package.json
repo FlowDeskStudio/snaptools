@@ -1,0 +1,25 @@
+{
+  "name": "snaptools",
+  "version": "1.0.0",
+  "description": "Free online tools for everyone - QR Generator, JSON Formatter, and more",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "tools",
+    "online-tools",
+    "qr-code",
+    "json-formatter"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^6.2.0"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  }
+}
