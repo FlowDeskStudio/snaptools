@@ -839,3 +839,6 @@ input, textarea, select {
     padding: 0 var(--space-md);
   }
 }
+
+/* --- Utility --- */
+.hidden { display: none !important; }
