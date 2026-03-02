@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Formatter & Cleaner - Free Online Tool</title>
+    <meta name="description"
+        content="Clean and format raw text instantly. Remove extra lines, normalize full/half-width characters, and format for business documents. 100% free and private.">
+    <meta name="keywords"
+        content="text formatter, text cleaner, normalize text, remove extra spaces, business text formatter">
+    <meta property="og:title" content="Text Formatter & Cleaner - Free Online Tool">
+    <meta property="og:description"
+        content="Clean and format raw text instantly. Remove extra lines, normalize characters. 100% free and private in your browser.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://devsnap.net/tools/text-formatter">
+    <meta property="og:image" content="https://devsnap.net/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Text Formatter & Cleaner">
+    <meta name="twitter:description"
+        content="Clean and format raw text instantly. Remove extra lines, normalize characters. 100% free and private in your browser.">
+    <meta name="twitter:image" content="https://devsnap.net/og-image.png">
+    <link rel="canonical" href="https://devsnap.net/tools/text-formatter">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        .textarea-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+        }
+
+        .editor {
+            width: 100%;
+            min-height: 400px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-md);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: var(--font-size-md);
+            line-height: 1.6;
+            resize: vertical;
+        }
+
+        .editor:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            background: var(--bg-glass);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-subtle);
+            margin-bottom: var(--space-lg);
+        }
+
+        .toggle-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            margin-right: var(--space-md);
+        }
+
+        .toggle-group input[type="checkbox"] {
+            accent-color: var(--primary-color);
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        .actions-flex {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: flex-end;
+            margin-top: var(--space-md);
+            border-top: 1px solid var(--border-subtle);
+            padding-top: var(--space-md);
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-gradient-orbs"></div>
+    <div class="page-wrapper">
+        <header class="site-header">
+            <div class="container">
+                <a href="/" class="logo">
+                    <div class="logo-icon">&#9889;</div>
+                    <span class="logo-text">devsnap</span>
+                </a>
+
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/">Home</a></li>
+                        <li>
+                            <details class="nav-details">
+                                <summary>Image Tools</summary>
+                                <div class="nav-details-menu">
+                                    <a href="/tools/bg-remover/">Background Remover</a>
+                                    <a href="/tools/image-compressor/">Image Compressor</a>
+                                    <a href="/tools/image-converter/">Image Converter</a>
+                                </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details class="nav-details">
+                                <summary>Utility Tools</summary>
+                                <div class="nav-details-menu">
+                                    <a href="/tools/text-formatter/">Text Formatter</a>
+                                    <a href="/tools/csv-to-excel/">CSV to Excel</a>
+                                    <a href="/tools/qr-generator/">QR Code Generator</a>
+                                    <a href="/tools/json-formatter/">JSON Formatter</a>
+                                    <a href="/tools/character-counter/">Character Counter</a>
+                                    <a href="/tools/password-generator/">Password Generator</a>
+                                    <a href="/tools/base64-tool/">Base64 Encoder</a>
+                                    <a href="/tools/color-converter/">Color Converter</a>
+                                </div>
+                            </details>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="tool-page-header">
+                <div class="container">
+                    <div class="breadcrumb">
+                        <a href="/">Home</a> <span>/</span> <span>Text Formatter</span>
+                    </div>
+                    <h1>Text Formatter & Cleaner</h1>
+                    <p>Instantly clean up messy text, emails, or notes. Fix spacing, convert character widths (Japanese
+                        alphanumeric), and standardize formats.</p>
+                </div>
+            </div>
+
+            <div class="container" style="max-width: 900px;">
+                <div class="ad-slot" id="ad-text-top">Ad Space</div>
+            </div>
+
+            <div class="tool-container" style="max-width: 1000px;">
+                <div class="tool-box">
+
+                    <div class="controls">
+                        <label class="toggle-group">
+                            <input type="checkbox" id="opt-spaces" checked> Remove Extra Spaces
+                        </label>
+                        <label class="toggle-group">
+                            <input type="checkbox" id="opt-lines" checked> Reduce Empty Lines
+                        </label>
+                        <label class="toggle-group" title="Converts Full-width alphanumeric (Ａ１) to Half-width (A1)">
+                            <input type="checkbox" id="opt-halfwidth" checked> Alphanumeric to Half-width
+                        </label>
+                        <label class="toggle-group" title="Converts Half-width Kana (ｱｲ) to Full-width (アイ)">
+                            <input type="checkbox" id="opt-fullkana" checked> Kana to Full-width
+                        </label>
+                        <label class="toggle-group">
+                            <input type="checkbox" id="opt-bullets" checked> Standardize Bullets
+                        </label>
+
+                        <div class="actions-flex">
+                            <button class="btn btn-primary" id="btn-format">&#10024; Format Text</button>
+                            <button class="btn btn-secondary" id="btn-copy">&#128203; Copy to Clipboard</button>
+                            <button class="btn btn-secondary" id="btn-clear">&#8635; Clear</button>
+                        </div>
+                    </div>
+
+                    <div class="textarea-wrap">
+                        <textarea class="editor" id="text-input"
+                            placeholder="Paste your raw text or email drafts here..."></textarea>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="container" style="max-width: 900px;">
+                <div class="ad-slot" id="ad-text-bottom">Ad Space</div>
+            </div>
+
+            <div class="tool-container" style="max-width: 1000px;">
+                <div class="tool-box"
+                    style="color: var(--text-secondary); font-size: var(--font-size-sm); line-height: 1.8;">
+                    <h2
+                        style="font-size: var(--font-size-lg); color: var(--text-primary); margin-bottom: var(--space-md);">
+                        About This Tool</h2>
+                    <p>This text formatter helps you quickly clean up messy text copied from PDFs, websites, or rushed
+                        meeting notes.</p>
+                    <p style="margin-top: var(--space-md);">
+                        It instantly fixes inconsistent Japanese character widths (Zenkaku/Hankaku rules), removes
+                        excessive blank lines and trailing spaces,
+                        and standardizes bullet points. Perfect for preparing text before sending business emails or
+                        pasting into Word documents.
+                        <strong>100% Client-Side:</strong> Your text is processed securely in your browser and is never
+                        sent to any server.
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p class="footer-text">&copy; 2026 devsnap.net. All tools are free and open for everyone.</p>
+                    <ul class="footer-links">
+                        <li><a href="/privacy.html">Privacy</a></li>
+                        <li><a href="/terms.html">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="/js/text-formatter.js" type="module"></script>
+</body>
+
+</html>

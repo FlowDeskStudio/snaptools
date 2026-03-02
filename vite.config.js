@@ -16,6 +16,7 @@ export default defineConfig({
         'image-compressor': resolve(__dirname, 'tools/image-compressor/index.html'),
         'image-converter': resolve(__dirname, 'tools/image-converter/index.html'),
         'csv-to-excel': resolve(__dirname, 'tools/csv-to-excel/index.html'),
+        'text-formatter': resolve(__dirname, 'tools/text-formatter/index.html'),
         privacy: resolve(__dirname, 'privacy.html'),
         terms: resolve(__dirname, 'terms.html'),
       },
