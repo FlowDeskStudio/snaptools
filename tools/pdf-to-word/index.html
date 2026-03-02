@@ -4,22 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free CSV to Excel Converter - No File Uploads</title>
+    <title>PDF to Word Converter - Free Text Extraction | devsnap.net</title>
     <meta name="description"
-        content="Convert CSV files to Excel (XLSX) instantly in your browser. Powerful encoding detection prevents garbled text. 100% free, private, and secure.">
-    <meta name="keywords" content="csv to excel, free csv converter, convert csv to xlsx, fix garbled csv text">
-    <meta property="og:title" content="Free CSV to Excel Converter - No File Uploads">
+        content="Convert PDF documents to editable Microsoft Word (.docx) files. Extracts text instantly and securely in your browser. 100% free and private.">
+    <meta name="keywords" content="pdf to word, extract pdf text, convert pdf to docx, free pdf to word converter">
+    <meta property="og:title" content="PDF to Word Converter - Free Text Extraction">
     <meta property="og:description"
-        content="Convert CSV to Excel securely in your browser. Auto-detects encoding to fix unreadable text.">
+        content="Convert PDFs to Word securely in your browser. Perfect for extracting text and data without uploading files to the cloud.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://devsnap.net/tools/csv-to-excel">
+    <meta property="og:url" content="https://devsnap.net/tools/pdf-to-word">
     <meta property="og:image" content="https://devsnap.net/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Free CSV to Excel Converter">
+    <meta name="twitter:title" content="PDF to Word Converter">
     <meta name="twitter:description"
-        content="Convert CSV to Excel securely in your browser. Auto-detects encoding to fix unreadable text.">
+        content="Convert PDFs to Word securely in your browser. Perfect for extracting text and data without uploading files to the cloud.">
     <meta name="twitter:image" content="https://devsnap.net/og-image.png">
-    <link rel="canonical" href="https://devsnap.net/tools/csv-to-excel">
+    <link rel="canonical" href="https://devsnap.net/tools/pdf-to-word">
     <link rel="stylesheet" href="/css/style.css">
 
     <style>
@@ -31,14 +31,13 @@
             transition: all 0.3s ease;
             cursor: pointer;
             background: rgba(255, 255, 255, 0.02);
-            margin-bottom: var(--space-2xl);
+            margin-bottom: var(--space-lg);
         }
 
         .upload-zone:hover,
         .upload-zone.drag-active {
             border-color: var(--primary-color);
             background: rgba(147, 112, 219, 0.05);
-            /* Soft primary tint */
         }
 
         .upload-zone svg {
@@ -122,18 +121,40 @@
             display: flex;
             gap: var(--space-md);
             margin-top: var(--space-xl);
-            justify-content: flex-end;
+            justify-content: center;
         }
 
-        .btn-download {
-            display: none;
+        /* Notice banner specific to this tool */
+        .notice-banner {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid #f59e0b;
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-xl);
+        }
+
+        .notice-banner h4 {
+            color: #fbbf24;
+            margin-bottom: var(--space-xs);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .notice-banner p {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            line-height: 1.6;
+            margin: 0;
         }
     </style>
 
-    <!-- SheetJS Library for Excel conversion -->
-    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
-    <!-- jschardet for encoding detection to prevent garbled text -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jschardet/3.0.0/jschardet.min.js"></script>
+    <!-- PDF.js for reading PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+
+    <!-- docx for generating Word files -->
+    <script src="https://unpkg.com/docx@8.2.3/build/index.js"></script>
 </head>
 
 <body>
@@ -165,7 +186,7 @@
                                 <div class="nav-details-menu">
                                     <a href="/tools/pdf-to-word/">PDF to Word</a>
                                     <a href="/tools/text-formatter/">Text Formatter</a>
-                                <a href="/tools/csv-to-excel/">CSV to Excel</a>
+                                    <a href="/tools/csv-to-excel/">CSV to Excel</a>
                                     <a href="/tools/qr-generator/">QR Code Generator</a>
                                     <a href="/tools/json-formatter/">JSON Formatter</a>
                                     <a href="/tools/character-counter/">Character Counter</a>
@@ -184,25 +205,34 @@
             <div class="tool-page-header">
                 <div class="container">
                     <div class="breadcrumb">
-                        <a href="/">Home</a> <span>/</span> <span>CSV to Excel Converter</span>
+                        <a href="/">Home</a> <span>/</span> <span>PDF to Word Converter</span>
                     </div>
-                    <h1>CSV to Excel Converter</h1>
-                    <p>Convert CSV files to beautiful Excel (XLSX) spreadsheets instantly. Automatically detects
-                        character encoding to prevent garbled Japanese text.</p>
+                    <h1>PDF to Word Converter</h1>
+                    <p>Extract text from PDF documents into editable Word (.docx) files. 100% free and runs securely in
+                        your browser.</p>
                 </div>
             </div>
 
             <div class="container" style="max-width: 900px;">
-                <div class="ad-slot" id="ad-csv-top">Ad Space</div>
+                <div class="ad-slot" id="ad-pdf-top">Ad Space</div>
             </div>
 
             <div class="tool-container">
                 <div class="tool-box">
+
+                    <div class="notice-banner">
+                        <h4>&#9888;&#65039; Before you start: Focus on Text Extraction</h4>
+                        <p>This is a fast, 100% free, browser-side tool. It is designed to <strong>extract plain
+                                paragraphs and text</strong> from PDFs so you can reuse them in Word. <br>Because it
+                            does not use expensive cloud servers, <strong>complex layouts, tables, images, and precise
+                                formatting will NOT be preserved.</strong></p>
+                    </div>
+
                     <div class="upload-zone" id="drop-zone" style="margin-bottom: 0;">
-                        <input type="file" id="file-input" accept=".csv" multiple>
+                        <input type="file" id="file-input" accept="application/pdf" multiple>
                         <div class="drop-zone-icon">&#128196;</div>
-                        <div class="drop-zone-text">Drop CSV files here or click to upload</div>
-                        <div class="drop-zone-hint">Multiple files supported</div>
+                        <div class="drop-zone-text">Drop PDF files here or click to upload</div>
+                        <div class="drop-zone-hint">Multiple files supported (Max 20MB per file recommended)</div>
                     </div>
 
                     <div id="file-list-container" style="display: none; margin-top: var(--space-xl);">
@@ -210,17 +240,17 @@
                         </h3>
                         <div id="file-list"></div>
 
-                        <div class="actions-bar"
-                            style="display: flex; gap: var(--space-md); margin-top: var(--space-lg); justify-content: center;">
+                        <div class="actions-bar">
                             <button class="btn btn-secondary btn-lg" id="btn-clear">&#8635; Clear All</button>
-                            <button class="btn btn-primary btn-lg" id="btn-convert">&#10515; Convert to Excel</button>
+                            <button class="btn btn-primary btn-lg" id="btn-convert">&#10515; Convert to Word</button>
                         </div>
                     </div>
+
                 </div>
             </div>
 
             <div class="container" style="max-width: 900px;">
-                <div class="ad-slot" id="ad-csv-bottom">Ad Space</div>
+                <div class="ad-slot" id="ad-pdf-bottom">Ad Space</div>
             </div>
 
             <div class="tool-container">
@@ -229,12 +259,13 @@
                     <h2
                         style="font-size: var(--font-size-lg); color: var(--text-primary); margin-bottom: var(--space-md);">
                         About This Tool</h2>
-                    <p>This free CSV to Excel converter solves the common "garbled text" problem (文字化け in Japanese) when
-                        opening CSVs in Excel.</p>
-                    <p style="margin-top: var(--space-md);">It automatically detects encodings like <strong>Shift-JIS or
-                            UTF-8</strong> and correctly translates them into native XLSX spreadsheets.
-                        <strong>100% Client-Side:</strong> Your data never leaves your device. All conversions happen
-                        entirely inside your web browser for complete privacy and security.
+                    <p>A simple, privacy-focused utility to extract text from your PDF files directly into Microsoft
+                        Word format.</p>
+                    <p style="margin-top: var(--space-md);">
+                        <strong>Privacy First:</strong> Most free PDF converters upload your highly sensitive documents
+                        to arbitrary third-party servers.
+                        Our tool uses WebAssembly, PDF.js, and browser-native Javascript to process the PDF entirely
+                        inside your local cache. Your files, documents, and private data never leave your screen.
                     </p>
                 </div>
             </div>
@@ -252,7 +283,9 @@
             </div>
         </footer>
     </div>
-    <script src="/js/csv-to-excel.js" type="module"></script>
+
+    <!-- Ensure docx library represents as the global docx namespace -->
+    <script src="/js/pdf-to-word.js" type="module"></script>
 </body>
 
 </html>

@@ -17,6 +17,7 @@ export default defineConfig({
         'image-converter': resolve(__dirname, 'tools/image-converter/index.html'),
         'csv-to-excel': resolve(__dirname, 'tools/csv-to-excel/index.html'),
         'text-formatter': resolve(__dirname, 'tools/text-formatter/index.html'),
+        'pdf-to-word': resolve(__dirname, 'tools/pdf-to-word/index.html'),
         privacy: resolve(__dirname, 'privacy.html'),
         terms: resolve(__dirname, 'terms.html'),
       },
