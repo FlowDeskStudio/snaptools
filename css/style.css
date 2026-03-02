@@ -415,20 +415,26 @@ select {
     padding: 0 0 0 var(--space-md);
     min-width: 0;
     backdrop-filter: none;
+    display: none !important;
   }
 
   .nav-dropdown:hover .nav-dropdown-menu {
-    display: none;
+    display: none !important;
   }
 
-  .nav-dropdown.open .nav-dropdown-menu {
-    display: block;
+  .nav-dropdown.open>.nav-dropdown-menu {
+    display: block !important;
   }
 
   .nav-dropdown-menu a {
     padding: var(--space-sm) 0;
     font-size: var(--font-size-sm);
     color: var(--text-muted);
+  }
+
+  /* Ensure nav-links items are visible */
+  .nav-links>li {
+    display: block;
   }
 
   .nav-overlay {
