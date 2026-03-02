@@ -166,7 +166,7 @@
                                 <div class="nav-details-menu">
                                     <a href="/tools/pdf-to-word/">PDF to Word</a>
                                     <a href="/tools/text-formatter/">Text Formatter</a>
-                                <a href="/tools/csv-to-excel/">CSV to Excel</a>
+                                    <a href="/tools/csv-to-excel/">CSV to Excel</a>
                                     <a href="/tools/qr-generator/">QR Code Generator</a>
                                     <a href="/tools/json-formatter/">JSON Formatter</a>
                                     <a href="/tools/character-counter/">Character Counter</a>
@@ -229,14 +229,46 @@
                     style="color: var(--text-secondary); font-size: var(--font-size-sm); line-height: 1.8;">
                     <h2
                         style="font-size: var(--font-size-lg); color: var(--text-primary); margin-bottom: var(--space-md);">
-                        About This Tool</h2>
-                    <p>This free CSV to Excel converter solves the common "garbled text" problem (文字化け in Japanese) when
-                        opening CSVs in Excel.</p>
-                    <p style="margin-top: var(--space-md);">It automatically detects encodings like <strong>Shift-JIS or
-                            UTF-8</strong> and correctly translates them into native XLSX spreadsheets.
-                        <strong>100% Client-Side:</strong> Your data never leaves your device. All conversions happen
-                        entirely inside your web browser for complete privacy and security.
-                    </p>
+                        Free CSV to Excel Converter (Fixes Garbled Text/文字化け)</h2>
+                    <p>This free converter instantly transforms CSV data into native Microsoft Excel (.xlsx)
+                        spreadsheets. It is specially designed to automatically detect and fix frustrating character
+                        encoding problems like the famous <strong>garbled text (文字化け)</strong> issue often encountered
+                        when Japanese CSV files (Shift-JIS) are opened directly in modern Excel.</p>
+
+                    <h3
+                        style="font-size: var(--font-size-md); color: var(--text-primary); margin-top: var(--space-lg); margin-bottom: var(--space-sm);">
+                        How to Convert CSV to Excel</h3>
+                    <ol style="padding-left: 20px; list-style-type: decimal; margin-bottom: var(--space-md);">
+                        <li>Drag and drop one or multiple `.csv` files into the upload box above.</li>
+                        <li>Click the "Convert to Excel" button.</li>
+                        <li>The system will auto-detect the file's text encoding (such as UTF-8 or Shift-JIS) and
+                            instantly generate perfectly formatted `.xlsx` files without garbled text.</li>
+                    </ol>
+
+                    <h3
+                        style="font-size: var(--font-size-md); color: var(--text-primary); margin-top: var(--space-lg); margin-bottom: var(--space-sm);">
+                        100% Secure & Private Operations</h3>
+                    <p>Financial CSV files often contain highly sensitive customer or business data. Unlike other online
+                        converters that force you to upload your files to mystery cloud servers, devsnap.net's CSV to
+                        Excel tool runs <strong>entirely inside your web browser</strong> using <code>SheetJS</code>.
+                        Your confidential datasets never leave your device, ensuring total privacy and GDPR compliance
+                        by design.</p>
+
+                    <h3
+                        style="font-size: var(--font-size-md); color: var(--text-primary); margin-top: var(--space-lg); margin-bottom: var(--space-sm);">
+                        Frequently Asked Questions (FAQ)</h3>
+                    <div style="margin-bottom: var(--space-md);">
+                        <strong style="color: var(--text-primary);">Q: Why does Excel show weird alien text when I open
+                            a CSV?</strong>
+                        <p>A: This happens because Excel expects text in a specific encoding format, but the CSV was
+                            saved in another (like Windows Shift-JIS vs UTF-8). Our tool detects the original encoding
+                            and translates it correctly into a standard Excel file format.</p>
+                    </div>
+                    <div style="margin-bottom: var(--space-md);">
+                        <strong style="color: var(--text-primary);">Q: Can I convert multiple files at once?</strong>
+                        <p>A: Yes! You can drag and drop dozens of CSV files into the box. Clicking convert will process
+                            and download them all automatically.</p>
+                    </div>
                 </div>
             </div>
         </main>
@@ -248,7 +280,8 @@
                     <ul class="footer-links">
                         <li><a href="/privacy.html">Privacy</a></li>
                         <li><a href="/terms.html">Terms</a></li>
-                        <li><a href="https://forms.gle/vPqL6f34aR8vX8Z97" target="_blank" rel="noopener noreferrer">Feedback & Requests</a></li>
+                        <li><a href="https://forms.gle/vPqL6f34aR8vX8Z97" target="_blank"
+                                rel="noopener noreferrer">Feedback & Requests</a></li>
                     </ul>
                 </div>
             </div>
