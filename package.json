@@ -20,6 +20,9 @@
     "vite": "^6.2.0"
   },
   "dependencies": {
+    "@imgly/background-removal": "^1.7.0",
+    "browser-image-compression": "^2.0.2",
+    "chart.js": "^4.5.1",
     "qrcode": "^1.5.4"
   }
 }

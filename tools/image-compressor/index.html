@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compress Images Online &mdash; Free, No Sign-up | devsnap.net</title>
+    <meta name="description"
+        content="Compress JPG, PNG, and WebP images without losing quality. 100% free, runs in your browser. No upload, no watermark.">
+    <meta name="keywords"
+        content="image compressor, compress image free, reduce image size, compress jpg, compress png">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://devsnap.net/tools/image-compressor/">
+    <link rel="stylesheet" href="/css/style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3419132714949841"
+        crossorigin="anonymous"></script>
+    <style>
+        .drop-zone {
+            border: 2px dashed var(--border-subtle);
+            border-radius: var(--radius-xl);
+            padding: var(--space-3xl) var(--space-xl);
+            text-align: center;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            background: var(--bg-glass);
+            position: relative;
+        }
+
+        .drop-zone:hover,
+        .drop-zone.dragover {
+            border-color: var(--accent-primary);
+            background: rgba(108, 92, 231, 0.08);
+        }
+
+        .drop-zone-icon {
+            font-size: 48px;
+            margin-bottom: var(--space-md);
+        }
+
+        .drop-zone-text {
+            color: var(--text-secondary);
+            font-size: var(--font-size-md);
+            margin-bottom: var(--space-sm);
+        }
+
+        .drop-zone-hint {
+            color: var(--text-muted);
+            font-size: var(--font-size-xs);
+        }
+
+        .drop-zone input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .quality-row {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+            background: var(--bg-glass);
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .quality-row label {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .quality-row input[type="range"] {
+            flex: 1;
+        }
+
+        .quality-row .quality-val {
+            font-family: monospace;
+            font-size: var(--font-size-lg);
+            color: var(--accent-secondary);
+            min-width: 48px;
+            text-align: right;
+        }
+
+        .results-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .result-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            padding: var(--space-md) var(--space-lg);
+            background: var(--bg-glass);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+        }
+
+        .result-item img {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+        }
+
+        .result-meta {
+            flex: 1;
+        }
+
+        .result-meta .name {
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            color: var(--text-primary);
+            word-break: break-all;
+        }
+
+        .result-meta .sizes {
+            font-size: var(--font-size-xs);
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .result-meta .savings {
+            font-size: var(--font-size-xs);
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-gradient-orbs"></div>
+    <div class="page-wrapper">
+        <header class="site-header">
+            <div class="container">
+                <a href="/" class="logo">
+                    <div class="logo-icon">&#9889;</div><span class="logo-text">devsnap</span>
+                </a>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tools/bg-remover/">BG Remover</a></li>
+                        <li><a href="/tools/image-compressor/" class="active">Compress</a></li>
+                        <li><a href="/tools/image-converter/">Convert</a></li>
+                        <li><a href="/tools/qr-generator/">QR</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main class="main-content">
+            <div class="tool-page-header">
+                <div class="container">
+                    <div class="breadcrumb"><a href="/">Home</a> <span>/</span> <span>Image Compressor</span></div>
+                    <h1>Compress Images</h1>
+                    <p>Reduce file size without losing quality &mdash; JPG, PNG, WebP supported.</p>
+                </div>
+            </div>
+            <div class="container" style="max-width:900px;">
+                <div class="ad-slot" id="ad-comp-top">Ad Space</div>
+            </div>
+            <div class="tool-container">
+                <div class="tool-box">
+                    <div class="quality-row">
+                        <label for="quality-slider">Quality</label>
+                        <input type="range" id="quality-slider" min="10" max="100" value="80">
+                        <span class="quality-val" id="quality-val">80%</span>
+                    </div>
+                    <div class="drop-zone" id="drop-zone">
+                        <input type="file" id="file-input" accept="image/png,image/jpeg,image/webp" multiple>
+                        <div class="drop-zone-icon">&#128230;</div>
+                        <div class="drop-zone-text">Drop images here or click to upload</div>
+                        <div class="drop-zone-hint">JPG, PNG, WebP &mdash; Multiple files supported</div>
+                    </div>
+                    <div id="results-section" class="hidden" style="margin-top: var(--space-xl);">
+                        <div class="results-list" id="results-list"></div>
+                        <div class="btn-group" style="margin-top: var(--space-lg); justify-content: center;">
+                            <button class="btn btn-secondary btn-lg" id="reset-btn">&#8635; Compress More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container" style="max-width:900px;">
+                <div class="ad-slot" id="ad-comp-bottom">Ad Space</div>
+            </div>
+            <div class="tool-container">
+                <div class="tool-box"
+                    style="color: var(--text-secondary); font-size: var(--font-size-sm); line-height: 1.8;">
+                    <h2
+                        style="font-size: var(--font-size-lg); color: var(--text-primary); margin-bottom: var(--space-md);">
+                        About This Tool</h2>
+                    <p>This free Image Compressor reduces file sizes while maintaining visual quality. All processing
+                        happens locally in your browser &mdash; your images are never uploaded to any server. Great for
+                        email attachments, websites, and social media.</p>
+                </div>
+            </div>
+        </main>
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p class="footer-text">&copy; 2026 devsnap.net. All tools are free and open for everyone.</p>
+                    <ul class="footer-links">
+                        <li><a href="/privacy.html">Privacy</a></li>
+                        <li><a href="/terms.html">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script type="module" src="/js/image-compressor.js"></script>
+</body>
+
+</html>

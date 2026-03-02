@@ -4,19 +4,121 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SnapTools - Free Online Tools for Everyone</title>
+  <title>devsnap.net &mdash; Free Online Tools You&rsquo;d Otherwise Pay For</title>
   <meta name="description"
-    content="Free, fast, and beautiful online tools. QR Code Generator, JSON Formatter, Character Counter, and more. No sign-up required.">
-  <meta name="keywords" content="online tools, free tools, QR code generator, JSON formatter, character counter">
+    content="Stop paying monthly fees for tools you barely use. Free image background remover, image compressor, QR generator, and more. No sign-up required.">
+  <meta name="keywords"
+    content="free online tools, remove background free, compress image free, subscription calculator, QR code generator">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://devsnap.net/">
-  <meta property="og:title" content="SnapTools - Free Online Tools">
-  <meta property="og:description" content="Free, fast, and beautiful online tools. No sign-up required.">
+  <meta property="og:title" content="devsnap.net &mdash; Free Online Tools You'd Otherwise Pay For">
+  <meta property="og:description" content="Stop paying monthly fees for tools you barely use. 100% free, no sign-up.">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="/css/style.css">
-
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3419132714949841" crossorigin="anonymous"></script>
+  <style>
+    /* Subscription Calculator Styles */
+    .calc-section {
+      padding: var(--space-3xl) 0;
+    }
+    .calc-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: var(--space-2xl);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .calc-box h2 {
+      font-size: var(--font-size-2xl);
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: var(--space-sm);
+    }
+    .calc-box .calc-subtitle {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: var(--font-size-md);
+      margin-bottom: var(--space-xl);
+    }
+    .preset-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-xl);
+      justify-content: center;
+    }
+    .preset-btn {
+      padding: var(--space-xs) var(--space-md);
+      background: var(--bg-glass);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      color: var(--text-secondary);
+      font-size: var(--font-size-xs);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .preset-btn:hover {
+      background: var(--accent-primary);
+      color: white;
+      border-color: var(--accent-primary);
+    }
+    .calc-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+    @media (max-width: 600px) {
+      .calc-inputs { grid-template-columns: 1fr; }
+    }
+    .calc-result {
+      background: var(--bg-glass);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      margin-bottom: var(--space-lg);
+      font-size: var(--font-size-md);
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+    .calc-result .accent { color: var(--accent-secondary); font-weight: 700; }
+    .calc-result .muted { color: var(--text-muted); font-size: var(--font-size-sm); }
+    .chart-wrap {
+      height: 300px;
+      position: relative;
+    }
+    .hidden { display: none !important; }
+
+    /* Category Headers */
+    .category-header {
+      margin-bottom: var(--space-xl);
+    }
+    .category-header h3 {
+      font-size: var(--font-size-xl);
+      font-weight: 700;
+      margin-bottom: var(--space-xs);
+    }
+    .category-header p {
+      color: var(--text-muted);
+      font-size: var(--font-size-sm);
+    }
+    .category-label {
+      display: inline-block;
+      padding: 2px var(--space-sm);
+      background: var(--accent-primary);
+      color: white;
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      margin-bottom: var(--space-sm);
+    }
+    .tools-section + .tools-section {
+      border-top: 1px solid var(--border-subtle);
+    }
+  </style>
 </head>
 
 <body>
@@ -28,17 +130,15 @@
       <div class="container">
         <a href="/" class="logo">
           <div class="logo-icon">&#9889;</div>
-          <span class="logo-text">SnapTools</span>
+          <span class="logo-text">devsnap</span>
         </a>
         <nav>
           <ul class="nav-links">
-            <li><a href="/">Home</a></li>
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="/tools/bg-remover/">BG Remover</a></li>
+            <li><a href="/tools/image-compressor/">Compress</a></li>
+            <li><a href="/tools/image-converter/">Convert</a></li>
             <li><a href="/tools/qr-generator/">QR</a></li>
-            <li><a href="/tools/json-formatter/">JSON</a></li>
-            <li><a href="/tools/character-counter/">Counter</a></li>
-            <li><a href="/tools/password-generator/">Password</a></li>
-            <li><a href="/tools/base64-tool/">Base64</a></li>
-            <li><a href="/tools/color-converter/">Color</a></li>
           </ul>
         </nav>
       </div>
@@ -54,104 +154,147 @@
             100% Free &mdash; No Sign-up Required
           </div>
           <h1>
-            Online Tools,<br>
-            <span class="gradient-text">Beautifully Simple.</span>
+            Stop Paying for Tools<br>
+            <span class="gradient-text">You Barely Use.</span>
           </h1>
           <p class="hero-subtitle">
-            Fast, free, and privacy-friendly tools that run entirely in your browser.
-            No data is ever uploaded to any server.
+            Free alternatives to features locked behind expensive subscriptions.
+            Everything runs in your browser &mdash; your files never leave your device.
           </p>
-          <a href="#tools" class="btn btn-primary btn-lg">Explore Tools &darr;</a>
+          <a href="#calculator" class="btn btn-primary btn-lg">Am I Overpaying? &darr;</a>
+        </div>
+      </section>
+
+      <!-- Subscription Calculator (Home Embedded) -->
+      <section class="calc-section" id="calculator">
+        <div class="container">
+          <div class="calc-box">
+            <h2>Subscription Break-Even Calculator</h2>
+            <p class="calc-subtitle">Find out if your monthly subscription is really worth it.</p>
+
+            <div class="preset-row" id="preset-buttons"></div>
+
+            <div class="calc-inputs">
+              <div class="form-group" style="margin:0;">
+                <label class="form-label" for="calc-service">Service Name</label>
+                <input type="text" id="calc-service" class="form-input" placeholder="e.g. Adobe CC">
+              </div>
+              <div class="form-group" style="margin:0;">
+                <label class="form-label" for="calc-monthly">Monthly Fee (&yen;)</label>
+                <input type="number" id="calc-monthly" class="form-input" placeholder="e.g. 7780" min="1">
+              </div>
+              <div class="form-group" style="margin:0;">
+                <label class="form-label" for="calc-peruse">Cost per Single Use (&yen;)</label>
+                <input type="number" id="calc-peruse" class="form-input" placeholder="e.g. 3000" min="1">
+              </div>
+            </div>
+
+            <button class="btn btn-primary btn-lg" id="calc-btn" style="width:100%; margin-bottom: var(--space-lg);">Calculate Break-Even Point</button>
+
+            <div id="calc-result" class="calc-result hidden">
+              <p id="calc-result-text"></p>
+            </div>
+
+            <div class="chart-wrap">
+              <canvas id="calc-chart"></canvas>
+            </div>
+          </div>
         </div>
       </section>
 
       <!-- Ad Slot (top) -->
       <div class="container">
-        <div class="ad-slot" id="ad-top">
-          <!-- AdSense ad unit will go here -->
-          Ad Space
-        </div>
+        <div class="ad-slot" id="ad-top">Ad Space</div>
       </div>
 
-      <!-- Tools Grid -->
+      <!-- Main Tools — Image & Document -->
       <section class="tools-section" id="tools">
         <div class="container">
           <div class="section-header">
             <h2>Pick a Tool</h2>
-            <p>Everything works in your browser &mdash; nothing gets uploaded.</p>
+            <p>Everything runs in your browser &mdash; your files never leave your device.</p>
+          </div>
+
+          <div class="category-header">
+            <span class="category-label">Image Tools</span>
+            <h3>Work with Images &mdash; Free</h3>
+            <p>No watermarks, no limits, no sign-up.</p>
           </div>
           <div class="tools-grid">
+            <a href="/tools/bg-remover/" class="tool-card" id="card-bgremover">
+              <div class="tool-card-icon">&#9988;</div>
+              <h3>Background Remover</h3>
+              <p>Remove image backgrounds instantly with AI. Works offline in your browser. No upload needed.</p>
+              <span class="tool-card-link">Open Tool <span class="arrow">&rarr;</span></span>
+            </a>
+            <a href="/tools/image-compressor/" class="tool-card" id="card-compress">
+              <div class="tool-card-icon">&#128230;</div>
+              <h3>Image Compressor</h3>
+              <p>Shrink image file sizes without losing quality. Perfect for email and web. JPG, PNG, WebP.</p>
+              <span class="tool-card-link">Open Tool <span class="arrow">&rarr;</span></span>
+            </a>
+            <a href="/tools/image-converter/" class="tool-card" id="card-imgconvert">
+              <div class="tool-card-icon">&#128257;</div>
+              <h3>Image Converter</h3>
+              <p>Convert images between JPG, PNG, and WebP. Batch convert multiple files at once.</p>
+              <span class="tool-card-link">Open Tool <span class="arrow">&rarr;</span></span>
+            </a>
+          </div>
+        </div>
+      </section>
 
-            <!-- QR Generator Card -->
+      <!-- Utility Tools -->
+      <section class="tools-section" id="utility-tools">
+        <div class="container">
+          <div class="category-header" style="margin-top: var(--space-2xl);">
+            <span class="category-label">Utility Tools</span>
+            <h3>Everyday Utilities</h3>
+            <p>Quick tools for common tasks.</p>
+          </div>
+          <div class="tools-grid">
             <a href="/tools/qr-generator/" class="tool-card" id="card-qr">
               <div class="tool-card-icon">&#128241;</div>
               <h3>QR Code Generator</h3>
-              <p>Generate QR codes instantly from any text or URL. Download as PNG. Customize size and colors.</p>
-              <span class="tool-card-link">
-                Open Tool <span class="arrow">&rarr;</span>
-              </span>
+              <p>Generate QR codes from any text or URL. Download as PNG. Customize size and colors.</p>
+              <span class="tool-card-link">Open Tool <span class="arrow">&rarr;</span></span>
             </a>
-
-            <!-- JSON Formatter Card -->
             <a href="/tools/json-formatter/" class="tool-card" id="card-json">
               <div class="tool-card-icon">{ }</div>
               <h3>JSON Formatter</h3>
-              <p>Format, validate, and beautify your JSON data. Spot errors instantly with syntax highlighting.</p>
-              <span class="tool-card-link">
-                Open Tool <span class="arrow">&rarr;</span>
-              </span>
+              <p>Format, validate, and beautify your JSON data. Spot errors with syntax highlighting.</p>
+              <span class="tool-card-link">Open Tool <span class="arrow">&rarr;</span></span>
             </a>
-
-            <!-- Character Counter Card -->
             <a href="/tools/character-counter/" class="tool-card" id="card-counter">
               <div class="tool-card-icon">&#128292;</div>
               <h3>Character Counter</h3>
-              <p>Count characters, words, sentences, and paragraphs in real time. Perfect for social media and SEO.</p>
-              <span class="tool-card-link">
-                Open Tool <span class="arrow">&rarr;</span>
-              </span>
+              <p>Count characters, words, sentences, and paragraphs in real time.</p>
+              <span class="tool-card-link">Open Tool <span class="arrow">&rarr;</span></span>
             </a>
-
-            <!-- Password Generator Card -->
             <a href="/tools/password-generator/" class="tool-card" id="card-password">
               <div class="tool-card-icon">&#128274;</div>
               <h3>Password Generator</h3>
-              <p>Generate strong, secure passwords with customizable length and character options. Stay safe online.</p>
-              <span class="tool-card-link">
-                Open Tool <span class="arrow">&rarr;</span>
-              </span>
+              <p>Generate strong, secure passwords with customizable length and options.</p>
+              <span class="tool-card-link">Open Tool <span class="arrow">&rarr;</span></span>
             </a>
-
-            <!-- Base64 Tool Card -->
             <a href="/tools/base64-tool/" class="tool-card" id="card-base64">
               <div class="tool-card-icon">&lt;/&gt;</div>
               <h3>Base64 Encoder/Decoder</h3>
-              <p>Encode text to Base64 or decode Base64 to text instantly. Supports Unicode characters.</p>
-              <span class="tool-card-link">
-                Open Tool <span class="arrow">&rarr;</span>
-              </span>
+              <p>Encode or decode Base64 text instantly. Supports Unicode characters.</p>
+              <span class="tool-card-link">Open Tool <span class="arrow">&rarr;</span></span>
             </a>
-
-            <!-- Color Converter Card -->
             <a href="/tools/color-converter/" class="tool-card" id="card-color">
               <div class="tool-card-icon">&#127912;</div>
               <h3>Color Converter</h3>
-              <p>Convert between HEX, RGB, and HSL color formats with live preview and interactive sliders.</p>
-              <span class="tool-card-link">
-                Open Tool <span class="arrow">&rarr;</span>
-              </span>
+              <p>Convert between HEX, RGB, and HSL with live preview and sliders.</p>
+              <span class="tool-card-link">Open Tool <span class="arrow">&rarr;</span></span>
             </a>
-
           </div>
         </div>
       </section>
 
       <!-- Ad Slot (bottom) -->
       <div class="container">
-        <div class="ad-slot" id="ad-bottom">
-          <!-- AdSense ad unit will go here -->
-          Ad Space
-        </div>
+        <div class="ad-slot" id="ad-bottom">Ad Space</div>
       </div>
     </main>
 
@@ -159,7 +302,7 @@
     <footer class="site-footer">
       <div class="container">
         <div class="footer-content">
-          <p class="footer-text">&copy; 2026 SnapTools. All tools are free and open for everyone.</p>
+          <p class="footer-text">&copy; 2026 devsnap.net. All tools are free and open for everyone.</p>
           <ul class="footer-links">
             <li><a href="/privacy.html">Privacy</a></li>
             <li><a href="/terms.html">Terms</a></li>
@@ -168,7 +311,7 @@
       </div>
     </footer>
   </div>
+  <script type="module" src="/js/subscription-calc.js"></script>
 </body>
 
 </html>
-
