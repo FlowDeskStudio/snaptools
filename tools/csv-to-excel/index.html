@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free CSV to Excel Converter - No File Uploads</title>
+    <meta name="description"
+        content="Convert CSV files to Excel (XLSX) instantly in your browser. Powerful encoding detection prevents garbled text. 100% free, private, and secure.">
+    <meta name="keywords" content="csv to excel, free csv converter, convert csv to xlsx, fix garbled csv text">
+    <meta property="og:title" content="Free CSV to Excel Converter - No File Uploads">
+    <meta property="og:description"
+        content="Convert CSV to Excel securely in your browser. Auto-detects encoding to fix unreadable text.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://devsnap.net/tools/csv-to-excel">
+    <meta property="og:image" content="https://devsnap.net/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free CSV to Excel Converter">
+    <meta name="twitter:description"
+        content="Convert CSV to Excel securely in your browser. Auto-detects encoding to fix unreadable text.">
+    <meta name="twitter:image" content="https://devsnap.net/og-image.png">
+    <link rel="canonical" href="https://devsnap.net/tools/csv-to-excel">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        .upload-zone {
+            border: 2px dashed rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius-lg);
+            padding: var(--space-3xl) var(--space-xl);
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.02);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .upload-zone:hover,
+        .upload-zone.drag-active {
+            border-color: var(--primary-color);
+            background: rgba(147, 112, 219, 0.05);
+            /* Soft primary tint */
+        }
+
+        .upload-zone svg {
+            width: 48px;
+            height: 48px;
+            margin-bottom: var(--space-md);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .upload-zone p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: var(--font-size-md);
+        }
+
+        .upload-zone .sub-text {
+            font-size: var(--font-size-sm);
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: var(--space-sm);
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-md);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-sm);
+        }
+
+        .file-name {
+            font-weight: 500;
+            color: var(--text-primary);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 60%;
+        }
+
+        .file-size {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            margin-right: auto;
+            margin-left: var(--space-md);
+        }
+
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-ready {
+            background: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+        }
+
+        .status-processing {
+            background: rgba(250, 204, 21, 0.1);
+            color: #facc15;
+        }
+
+        .status-done {
+            background: rgba(74, 222, 128, 0.1);
+            color: #4ade80;
+        }
+
+        .status-error {
+            background: rgba(248, 113, 113, 0.1);
+            color: #f87171;
+        }
+
+        .actions-bar {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-xl);
+            justify-content: flex-end;
+        }
+
+        .btn-download {
+            display: none;
+        }
+    </style>
+
+    <!-- SheetJS Library for Excel conversion -->
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+    <!-- jschardet for encoding detection to prevent garbled text -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jschardet/3.0.0/jschardet.min.js"></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="site-logo">
+                <svg viewBox="0 0 24 24" fill="none" class="brand-logomark">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                    <path d="M12 6L12 18M6 12L18 12" stroke="currentColor" stroke-width="2" />
+                </svg>
+                devsnap
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li>
+                        <details class="nav-details">
+                            <summary>Image Tools</summary>
+                            <div class="nav-details-menu">
+                                <a href="/tools/bg-remover/">Background Remover</a>
+                                <a href="/tools/image-compressor/">Image Compressor</a>
+                                <a href="/tools/image-converter/">Image Converter</a>
+                            </div>
+                        </details>
+                    </li>
+                    <li>
+                        <details class="nav-details">
+                            <summary>Utility Tools</summary>
+                            <div class="nav-details-menu">
+                                <a href="/tools/csv-to-excel/">CSV to Excel</a>
+                                <a href="/tools/qr-generator/">QR Code Generator</a>
+                                <a href="/tools/json-formatter/">JSON Formatter</a>
+                                <a href="/tools/character-counter/">Character Counter</a>
+                                <a href="/tools/password-generator/">Password Generator</a>
+                                <a href="/tools/base64-tool/">Base64 Encoder</a>
+                                <a href="/tools/color-converter/">Color Converter</a>
+                            </div>
+                        </details>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="tool-layout container">
+        <div class="tool-header">
+            <h1>CSV to Excel Converter</h1>
+            <p class="tool-description">
+                Convert CSV files to beautiful Excel (XLSX) spreadsheets instantly.
+                Automatically detects character encoding to prevent garbled Japanese text. 100% free and processes
+                locally in your browser so your data never leaves your device.
+            </p>
+        </div>
+
+        <div class="tool-workspace">
+            <!-- Upload Zone -->
+            <div class="upload-zone" id="drop-zone">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15.01l1.41 1.41L11 14.84V19h2v-4.16l1.59 1.59L16 15.01 12.01 11z" />
+                </svg>
+                <p>Drag & Drop CSV files here</p>
+                <p class="sub-text">or click to browse from your device</p>
+                <input type="file" id="file-input" accept=".csv" multiple>
+            </div>
+
+            <!-- File List -->
+            <div id="file-list-container" style="display: none;">
+                <h3>Files</h3>
+                <div id="file-list"></div>
+
+                <div class="actions-bar">
+                    <button class="btn btn-secondary" id="btn-clear">Clear All</button>
+                    <button class="btn btn-primary" id="btn-convert">Convert to Excel</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="site-logo">devsnap</span>
+                <p class="footer-desc">Free, fast, and private tools for developers and creators. No hidden fees, no
+                    servers, just pure browser power.</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-col">
+                    <strong>Tools</strong>
+                    <a href="/tools/bg-remover/">Remove Background</a>
+                    <a href="/tools/image-compressor/">Compress Image</a>
+                    <a href="/tools/qr-generator/">QR Generator</a>
+                </div>
+                <div class="link-col">
+                    <strong>Legal</strong>
+                    <a href="/privacy.html">Privacy Policy</a>
+                    <a href="/terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>&copy; 2026 devsnap.net. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/js/csv-to-excel.js" type="module"></script>
+</body>
+
+</html>
