@@ -254,8 +254,8 @@
                 <div class="footer-content">
                     <p class="footer-text">&copy; 2026 devsnap.net. All tools are free and open for everyone.</p>
                     <ul class="footer-links">
-                        <li><a href="/privacy.html">Privacy</a></li>
-                        <li><a href="/terms.html">Terms</a></li>
+                        <li><a href="/privacy.html" data-i18n="footer_privacy">Privacy</a></li>
+                        <li><a href="/terms.html" data-i18n="footer_terms">Terms</a></li>
                         <li><a href="https://forms.gle/vPqL6f34aR8vX8Z97" target="_blank" rel="noopener noreferrer">Feedback & Requests</a></li>
                     </ul>
                 </div>
@@ -263,7 +263,43 @@
         </footer>
     </div>
     <script type="module" src="/js/image-converter.js"></script>
-  <script src="/js/i18n.js"></script>
+  <script>
+window._i18n = {
+  en: {
+    nav_home: 'Home',
+    nav_image_tools: 'Image Tools',
+    nav_utility_tools: 'Utility Tools',
+    footer_copy: '© 2026 devsnap.net. All tools are free and open for everyone.',
+    footer_privacy: 'Privacy',
+    footer_terms: 'Terms',
+    footer_feedback: 'Feedback & Requests',
+    _pageTitle: 'Free Image Format Converter — JPG PNG WebP | devsnap.net',
+    _pageDescription: 'Convert images between JPG, PNG, and WebP. Batch convert multiple files at once. 100% free and private.',
+    breadcrumb_page: 'Image Converter',
+    page_title: 'Image Format Converter',
+    page_desc: 'Convert between JPG, PNG, and WebP — batch mode, 100% free.',
+    drop_text: 'Drop images here or click to upload',
+    drop_hint: 'JPG, PNG, WebP supported',
+  },
+  ja: {
+    nav_home: 'ホーム',
+    nav_image_tools: '画像ツール',
+    nav_utility_tools: 'ユーティリティ',
+    footer_copy: '© 2026 devsnap.net すべてのツールは無料で誰でも利用可能です。',
+    footer_privacy: 'プライバシー',
+    footer_terms: '利用規約',
+    footer_feedback: 'フィードバック・要望',
+    _pageTitle: '無料画像形式変換ツール — JPG PNG WebP | devsnap.net',
+    _pageDescription: 'JPG・PNG・WebP間で画像を変換。複数ファイルの一括変換に対応。100%無料。',
+    breadcrumb_page: '画像形式変換',
+    page_title: '画像形式変換ツール',
+    page_desc: 'JPG・PNG・WebP間で変換 — 一括処理対応、100%無料。',
+    drop_text: '画像をここにドロップ、またはクリックしてアップロード',
+    drop_hint: 'JPG, PNG, WebP対応',
+  },
+};
+</script>
+<script src="/js/i18n.js"></script>
 </body>
 
 </html>

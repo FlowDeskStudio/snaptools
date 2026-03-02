@@ -211,9 +211,9 @@
             <div class="tool-page-header">
                 <div class="container">
                     <div class="breadcrumb">
-                        <a href="/">Home</a> <span>/</span> <span>PDF to Word Converter</span>
+                        <a href="/">Home</a> <span>/</span> <span data-i18n="breadcrumb_page">PDF to Word Converter</span>
                     </div>
-                    <h1>PDF to Word Converter</h1>
+                    <h1 data-i18n="page_title">PDF to Word Converter</h1>
                     <p>Extract text from PDF documents into editable Word (.docx) files. 100% free and runs securely in
                         your browser.</p>
                 </div>
@@ -314,8 +314,8 @@
                 <div class="footer-content">
                     <p class="footer-text">&copy; 2026 devsnap.net. All tools are free and open for everyone.</p>
                     <ul class="footer-links">
-                        <li><a href="/privacy.html">Privacy</a></li>
-                        <li><a href="/terms.html">Terms</a></li>
+                        <li><a href="/privacy.html" data-i18n="footer_privacy">Privacy</a></li>
+                        <li><a href="/terms.html" data-i18n="footer_terms">Terms</a></li>
                         <li><a href="https://forms.gle/vPqL6f34aR8vX8Z97" target="_blank"
                                 rel="noopener noreferrer">Feedback & Requests</a></li>
                     </ul>
@@ -326,6 +326,74 @@
 
     <!-- Ensure docx library represents as the global docx namespace -->
     <script src="/js/pdf-to-word.js" type="module"></script>
+<script>
+window._i18n = {
+  en: {
+    nav_home: 'Home',
+    nav_image_tools: 'Image Tools',
+    nav_utility_tools: 'Utility Tools',
+    footer_copy: '© 2026 devsnap.net. All tools are free and open for everyone.',
+    footer_privacy: 'Privacy',
+    footer_terms: 'Terms',
+    footer_feedback: 'Feedback & Requests',
+    _pageTitle: 'PDF to Word Converter - Free Text Extraction | devsnap.net',
+    _pageDescription: 'Convert PDF documents to editable Microsoft Word (.docx) files. Extracts text securely in your browser. 100% free.',
+    breadcrumb_page: 'PDF to Word Converter',
+    page_title: 'PDF to Word Converter',
+    page_desc: 'Extract text from PDF documents into editable Word (.docx) files. 100% free and runs securely in your browser.',
+    notice_title: '⚠️ Before you start: Focus on Text Extraction',
+    notice_desc_html: 'This is a fast, 100% free, browser-side tool. It is designed to <strong>extract plain paragraphs and text</strong> from PDFs so you can reuse them in Word. <br>Because it does not use expensive cloud servers, <strong>complex layouts, tables, images, and precise formatting will NOT be preserved.</strong>',
+    drop_text: 'Drop PDF files here or click to upload',
+    drop_hint: 'Multiple files supported (Max 20MB per file recommended)',
+    btn_clear: '↻ Clear All',
+    btn_convert: '⤓ Convert to Word',
+    files_title: 'Files to Convert',
+    about_title: 'Free PDF to Word Text Extractor',
+    about_desc: 'Stop manually re-typing text from PDFs. Our free PDF to Word tool scans your documents and extracts textual content into editable Word (.docx) format.',
+    how_title: 'How to Convert PDF to Word',
+    how_steps_html: '<li>Drag and drop your PDF documents into the upload box.</li><li>Click "Convert to Word" and wait a few seconds.</li><li>Download the generated .docx files to begin editing.</li>',
+    safety_title: 'Privacy Focused: No Uploads Required',
+    safety_desc_html: 'Most free "PDF Converters" force you to upload sensitive files to cloud servers. This devsnap.net tool uses <strong>PDF.js and WebAssembly</strong> to read and construct files entirely within your browser. Your documents are never uploaded anywhere.',
+    faq_title: 'Frequently Asked Questions (FAQ)',
+    faq1_q: 'Q: Will this preserve my exact layout, tables, and images?',
+    faq1_a: 'A: No. This tool is designed as a Text Extractor. Complex visual layouts or images will not be faithfully recreated in Word.',
+    faq2_q: 'Q: Can it convert scanned PDFs (images) to text?',
+    faq2_a: 'A: This tool is limited to PDFs with actual text layers. It does not perform OCR on scanned images.',
+  },
+  ja: {
+    nav_home: 'ホーム',
+    nav_image_tools: '画像ツール',
+    nav_utility_tools: 'ユーティリティ',
+    footer_copy: '© 2026 devsnap.net すべてのツールは無料で誰でも利用可能です。',
+    footer_privacy: 'プライバシー',
+    footer_terms: '利用規約',
+    footer_feedback: 'フィードバック・要望',
+    _pageTitle: 'PDF→Word変換ツール — 無料テキスト抽出 | devsnap.net',
+    _pageDescription: 'PDFから編集可能なWord（.docx）ファイルに変換。ブラウザ上で安全に処理。100%無料。',
+    breadcrumb_page: 'PDF → Word変換',
+    page_title: 'PDF → Word変換ツール',
+    page_desc: 'PDF文書からテキストを抽出し、編集可能なWord（.docx）ファイルに変換。100%無料、ブラウザ上で完結。',
+    notice_title: '⚠️ ご利用前にお読みください：テキスト抽出について',
+    notice_desc_html: 'このツールは100%無料のブラウザ内ツールです。PDFから<strong>テキスト（段落・文章）を抽出</strong>してWordで再利用するためのものです。<br>クラウドサーバーを使用しないため、<strong>複雑なレイアウト、表、画像、書式は再現されません。</strong>',
+    drop_text: 'PDFファイルをここにドロップ、またはクリックしてアップロード',
+    drop_hint: '複数ファイル対応（1ファイル20MB以下推奨）',
+    btn_clear: '↻ すべてクリア',
+    btn_convert: '⤓ Wordに変換',
+    files_title: '変換するファイル',
+    about_title: '無料PDF→Wordテキスト抽出ツール',
+    about_desc: 'PDFからの手入力はもう不要。この無料ツールがPDFのテキストを抽出し、編集可能なWord（.docx）形式に変換します。',
+    how_title: 'PDF→Word変換の手順',
+    how_steps_html: '<li>PDF文書をアップロードボックスにドラッグ＆ドロップします。</li><li>「Wordに変換」ボタンをクリックし、数秒お待ちください。</li><li>生成された.docxファイルをダウンロードして編集を開始します。</li>',
+    safety_title: 'プライバシー最優先：アップロード不要',
+    safety_desc_html: '多くの無料PDF変換サービスは機密文書をクラウドサーバーにアップロードさせます。devsnap.netは<strong>PDF.jsとWebAssembly</strong>を使い、ブラウザ内でPDFの読み取りとWord生成を完結させます。文書が外部に送信されることはありません。',
+    faq_title: 'よくある質問（FAQ）',
+    faq1_q: 'Q: レイアウトや表、画像も再現されますか？',
+    faq1_a: 'A: いいえ。このツールはテキスト抽出に特化しています。複雑なレイアウトや画像はWordに再現されません。',
+    faq2_q: 'Q: スキャンしたPDF（画像）もテキスト抽出できますか？',
+    faq2_a: 'A: テキストレイヤーが埋め込まれたPDFにのみ対応しています。スキャン画像のOCR処理は対応していません。',
+  },
+};
+</script>
 <script src="/js/i18n.js"></script>
 </body>
 

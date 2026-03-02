@@ -202,9 +202,9 @@
             <div class="tool-page-header">
                 <div class="container">
                     <div class="breadcrumb">
-                        <a href="/">Home</a> <span>/</span> <span>Background Remover</span>
+                        <a href="/">Home</a> <span>/</span> <span data-i18n="breadcrumb_page">Background Remover</span>
                     </div>
-                    <h1>Remove Image Background</h1>
+                    <h1 data-i18n="page_title">Remove Image Background</h1>
                     <p>AI-powered background removal &mdash; 100% free, runs entirely in your browser.</p>
                 </div>
             </div>
@@ -317,8 +317,8 @@
                 <div class="footer-content">
                     <p class="footer-text">&copy; 2026 devsnap.net. All tools are free and open for everyone.</p>
                     <ul class="footer-links">
-                        <li><a href="/privacy.html">Privacy</a></li>
-                        <li><a href="/terms.html">Terms</a></li>
+                        <li><a href="/privacy.html" data-i18n="footer_privacy">Privacy</a></li>
+                        <li><a href="/terms.html" data-i18n="footer_terms">Terms</a></li>
                         <li><a href="https://forms.gle/vPqL6f34aR8vX8Z97" target="_blank"
                                 rel="noopener noreferrer">Feedback & Requests</a></li>
                     </ul>
@@ -327,6 +327,76 @@
         </footer>
     </div>
     <script type="module" src="/js/bg-remover.js"></script>
+<script>
+window._i18n = {
+  en: {
+    nav_home: 'Home',
+    nav_image_tools: 'Image Tools',
+    nav_utility_tools: 'Utility Tools',
+    footer_copy: '© 2026 devsnap.net. All tools are free and open for everyone.',
+    footer_privacy: 'Privacy',
+    footer_terms: 'Terms',
+    footer_feedback: 'Feedback & Requests',
+    _pageTitle: 'Remove Background from Image — Free Online AI Tool | devsnap.net',
+    _pageDescription: 'Remove image backgrounds instantly with AI. 100% free, no sign-up, no upload. Everything runs in your browser.',
+    breadcrumb_page: 'Background Remover',
+    page_title: 'Remove Image Background',
+    page_desc: 'AI-powered background removal — 100% free, runs entirely in your browser.',
+    drop_text: 'Drop an image here or click to upload',
+    drop_hint: 'Supports PNG, JPG, WebP — Max 10MB',
+    label_original: 'Original',
+    label_result: 'Background Removed',
+    btn_download: '⤓ Download PNG',
+    btn_reset: '↻ Try Another',
+    about_title: 'About This Free AI Background Remover',
+    about_desc_html: 'Our free Background Remover tool uses advanced ONNX Web runtime AI to automatically detect and extract the main subject from your photos. It creates clean, transparent background PNG images instantly. Unlike many other cloud-based services, <strong>devsnap.net processes your images 100% locally in your browser</strong>.',
+    how_title: 'How to Use',
+    how_steps_html: '<li>Drag and drop your image (PNG, JPG, or WebP) into the upload zone, or click to select a file.</li><li>The AI model will begin processing your image. Note: On your very first visit, the AI model (~40MB) will download to your browser cache. Subsequent uses will be nearly instant.</li><li>Preview the original side-by-side with the background-removed version.</li><li>Click "Download PNG" to save the high-quality transparent image to your device.</li>',
+    safety_title: 'Why is it Safe & Private?',
+    safety_desc_html: 'Traditional background removal tools upload your sensitive photos, portraits, or product images to unknown remote servers for processing. This raises significant privacy concerns, especially for confidential business assets or personal photos. devsnap.net utilizes <strong>WebAssembly (WASM)</strong> and <strong>WebGPU</strong> to run powerful machine learning models entirely on your own device\'s hardware. Your images never leave your computer, ensuring absolute privacy and data security.',
+    faq_title: 'Frequently Asked Questions (FAQ)',
+    faq1_q: 'Q: Is this tool really 100% free?',
+    faq1_a: 'A: Yes! There are no hidden fees, no subscriptions, and we don\'t even ask you to create an account. It\'s completely free to use as many times as you like.',
+    faq2_q: 'Q: Why does it take a moment the first time?',
+    faq2_a: 'A: Because we prioritize your privacy, the AI processing happens on your device. The first time you use the tool, your browser downloads the AI model to its cache. Future background removals will be vastly faster.',
+    faq3_q: 'Q: What types of images work best?',
+    faq3_a: 'A: The AI excels at identifying clear subjects like human portraits, pets, cars, and distinct products. High-contrast images where the subject stands out clearly from the background yield the crispest results.',
+  },
+  ja: {
+    nav_home: 'ホーム',
+    nav_image_tools: '画像ツール',
+    nav_utility_tools: 'ユーティリティ',
+    footer_copy: '© 2026 devsnap.net すべてのツールは無料で誰でも利用可能です。',
+    footer_privacy: 'プライバシー',
+    footer_terms: '利用規約',
+    footer_feedback: 'フィードバック・要望',
+    _pageTitle: '画像背景透過（除去）— 無料AIツール | devsnap.net',
+    _pageDescription: 'AIが画像の背景を瞬時に除去。100%無料・登録不要・アップロード不要。すべてブラウザ上で処理。',
+    breadcrumb_page: '背景透過',
+    page_title: '画像の背景を除去',
+    page_desc: 'AI搭載の背景除去 — 100%無料、ブラウザ上で完結。',
+    drop_text: '画像をここにドロップ、またはクリックしてアップロード',
+    drop_hint: 'PNG, JPG, WebP対応 — 最大10MB',
+    label_original: 'オリジナル',
+    label_result: '背景除去後',
+    btn_download: '⤓ PNGをダウンロード',
+    btn_reset: '↻ 別の画像を試す',
+    about_title: '無料AI背景透過ツールについて',
+    about_desc_html: 'この無料背景透過ツールは、高度なONNX WebランタイムAIを使用して、写真の被写体を自動認識し背景を除去します。クラウドベースのサービスとは異なり、<strong>devsnap.netはあなたの画像を100%ブラウザ内で処理します</strong>。',
+    how_title: '使い方',
+    how_steps_html: '<li>画像（PNG、JPG、WebP）をアップロードゾーンにドラッグ＆ドロップするか、クリックしてファイルを選択します。</li><li>AIモデルが画像の処理を開始します。初回訪問時はAIモデル（約40MB）がブラウザキャッシュにダウンロードされます。2回目以降はほぼ瞬時に処理されます。</li><li>オリジナルと背景除去後の画像を並べてプレビューします。</li><li>「PNGをダウンロード」をクリックして、高品質な透過画像をダウンロードします。</li>',
+    safety_title: 'なぜ安全？プライバシーは？',
+    safety_desc_html: '従来の背景除去ツールは、写真やポートレート、商品画像を外部サーバーにアップロードして処理するため、プライバシー上の懸念があります。devsnap.netは<strong>WebAssembly (WASM)</strong>と<strong>WebGPU</strong>を利用し、お使いのデバイス上でAIモデルを実行します。画像がPCの外に出ることは一切ありません。',
+    faq_title: 'よくある質問（FAQ）',
+    faq1_q: 'Q: 本当に100%無料ですか？',
+    faq1_a: 'A: はい！隠れた料金やサブスクリプションはなく、アカウント作成も不要です。何度でも無料でご利用いただけます。',
+    faq2_q: 'Q: 初回の処理に時間がかかるのはなぜ？',
+    faq2_a: 'A: プライバシー保護のため、AI処理はお使いのデバイス上で行われます。初回利用時にブラウザがAIモデルをキャッシュにダウンロードします。以降の処理は大幅に高速化されます。',
+    faq3_q: 'Q: どんな画像に対応していますか？',
+    faq3_a: 'A: 人物、ペット、車、商品写真など、被写体がはっきりした画像で最高の結果が得られます。コントラストが高い画像ほどきれいに切り抜けます。',
+  },
+};
+</script>
 <script src="/js/i18n.js"></script>
 </body>
 
