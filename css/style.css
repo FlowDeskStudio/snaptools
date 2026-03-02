@@ -378,12 +378,15 @@ select {
     right: -100%;
     width: 280px;
     height: 100vh;
-    background: var(--bg-card);
-    border-left: 1px solid var(--border-subtle);
+    height: 100dvh;
+    height: -webkit-fill-available;
+    background: #12121a;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
     padding: 80px var(--space-xl) var(--space-xl);
     transition: right 0.3s ease;
     z-index: 200;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .site-header nav.open {

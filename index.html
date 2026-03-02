@@ -140,49 +140,6 @@
       display: none !important;
     }
 
-    /* Dropdown Nav */
-    .nav-dropdown {
-      position: relative;
-    }
-
-    .nav-dropdown>a {
-      cursor: pointer;
-    }
-
-    .nav-dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: var(--space-sm) 0;
-      min-width: 180px;
-      z-index: 100;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    }
-
-    .nav-dropdown:hover .nav-dropdown-menu {
-      display: block;
-    }
-
-    .nav-dropdown-menu a {
-      display: block;
-      padding: var(--space-xs) var(--space-lg);
-      color: var(--text-secondary);
-      font-size: var(--font-size-sm);
-      text-decoration: none;
-      white-space: nowrap;
-      transition: all 0.15s;
-    }
-
-    .nav-dropdown-menu a:hover {
-      color: var(--text-primary);
-      background: var(--bg-glass);
-    }
-
     /* Category Headers */
     .category-header {
       margin-bottom: var(--space-xl);
@@ -216,7 +173,7 @@
   </style>
 </head>
 
-<body>
+<body><div class="nav-overlay"></div>
   <div class="bg-gradient-orbs"></div>
   <div class="page-wrapper">
 
@@ -227,7 +184,12 @@
           <div class="logo-icon">&#9889;</div>
           <span class="logo-text">devsnap</span>
         </a>
-        <button class="hamburger-btn" aria-label="Menu"><span></span><span></span><span></span></button><div class="nav-overlay"></div>
+        
+        
+        <button class="hamburger-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+
+        
+        
         <nav>
           <ul class="nav-links">
             <li><a href="/" class="active">Home</a></li>
