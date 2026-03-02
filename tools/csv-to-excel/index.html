@@ -137,108 +137,119 @@
 </head>
 
 <body>
-    <header class="site-header">
-        <div class="container">
-            <a href="/" class="site-logo">
-                <svg viewBox="0 0 24 24" fill="none" class="brand-logomark">
-                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
-                    <path d="M12 6L12 18M6 12L18 12" stroke="currentColor" stroke-width="2" />
-                </svg>
-                devsnap
-            </a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="/">Home</a></li>
-                    <li>
-                        <details class="nav-details">
-                            <summary>Image Tools</summary>
-                            <div class="nav-details-menu">
-                                <a href="/tools/bg-remover/">Background Remover</a>
-                                <a href="/tools/image-compressor/">Image Compressor</a>
-                                <a href="/tools/image-converter/">Image Converter</a>
-                            </div>
-                        </details>
-                    </li>
-                    <li>
-                        <details class="nav-details">
-                            <summary>Utility Tools</summary>
-                            <div class="nav-details-menu">
-                                <a href="/tools/csv-to-excel/">CSV to Excel</a>
-                                <a href="/tools/qr-generator/">QR Code Generator</a>
-                                <a href="/tools/json-formatter/">JSON Formatter</a>
-                                <a href="/tools/character-counter/">Character Counter</a>
-                                <a href="/tools/password-generator/">Password Generator</a>
-                                <a href="/tools/base64-tool/">Base64 Encoder</a>
-                                <a href="/tools/color-converter/">Color Converter</a>
-                            </div>
-                        </details>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <div class="bg-gradient-orbs"></div>
+    <div class="page-wrapper">
+        <header class="site-header">
+            <div class="container">
+                <a href="/" class="logo">
+                    <div class="logo-icon">&#9889;</div>
+                    <span class="logo-text">devsnap</span>
+                </a>
 
-    <main class="tool-layout container">
-        <div class="tool-header">
-            <h1>CSV to Excel Converter</h1>
-            <p class="tool-description">
-                Convert CSV files to beautiful Excel (XLSX) spreadsheets instantly.
-                Automatically detects character encoding to prevent garbled Japanese text. 100% free and processes
-                locally in your browser so your data never leaves your device.
-            </p>
-        </div>
-
-        <div class="tool-workspace">
-            <!-- Upload Zone -->
-            <div class="upload-zone" id="drop-zone">
-                <svg fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                        d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15.01l1.41 1.41L11 14.84V19h2v-4.16l1.59 1.59L16 15.01 12.01 11z" />
-                </svg>
-                <p>Drag & Drop CSV files here</p>
-                <p class="sub-text">or click to browse from your device</p>
-                <input type="file" id="file-input" accept=".csv" multiple>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/">Home</a></li>
+                        <li>
+                            <details class="nav-details">
+                                <summary>Image Tools</summary>
+                                <div class="nav-details-menu">
+                                    <a href="/tools/bg-remover/">Background Remover</a>
+                                    <a href="/tools/image-compressor/">Image Compressor</a>
+                                    <a href="/tools/image-converter/">Image Converter</a>
+                                </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details class="nav-details">
+                                <summary>Utility Tools</summary>
+                                <div class="nav-details-menu">
+                                    <a href="/tools/csv-to-excel/">CSV to Excel</a>
+                                    <a href="/tools/qr-generator/">QR Code Generator</a>
+                                    <a href="/tools/json-formatter/">JSON Formatter</a>
+                                    <a href="/tools/character-counter/">Character Counter</a>
+                                    <a href="/tools/password-generator/">Password Generator</a>
+                                    <a href="/tools/base64-tool/">Base64 Encoder</a>
+                                    <a href="/tools/color-converter/">Color Converter</a>
+                                </div>
+                            </details>
+                        </li>
+                    </ul>
+                </nav>
             </div>
+        </header>
 
-            <!-- File List -->
-            <div id="file-list-container" style="display: none;">
-                <h3>Files</h3>
-                <div id="file-list"></div>
-
-                <div class="actions-bar">
-                    <button class="btn btn-secondary" id="btn-clear">Clear All</button>
-                    <button class="btn btn-primary" id="btn-convert">Convert to Excel</button>
+        <main class="main-content">
+            <div class="tool-page-header">
+                <div class="container">
+                    <div class="breadcrumb">
+                        <a href="/">Home</a> <span>/</span> <span>CSV to Excel Converter</span>
+                    </div>
+                    <h1>CSV to Excel Converter</h1>
+                    <p>Convert CSV files to beautiful Excel (XLSX) spreadsheets instantly. Automatically detects
+                        character encoding to prevent garbled Japanese text.</p>
                 </div>
             </div>
-        </div>
-    </main>
 
-    <footer class="site-footer">
-        <div class="container footer-content">
-            <div class="footer-brand">
-                <span class="site-logo">devsnap</span>
-                <p class="footer-desc">Free, fast, and private tools for developers and creators. No hidden fees, no
-                    servers, just pure browser power.</p>
+            <div class="container" style="max-width: 900px;">
+                <div class="ad-slot" id="ad-csv-top">Ad Space</div>
             </div>
-            <div class="footer-links">
-                <div class="link-col">
-                    <strong>Tools</strong>
-                    <a href="/tools/bg-remover/">Remove Background</a>
-                    <a href="/tools/image-compressor/">Compress Image</a>
-                    <a href="/tools/qr-generator/">QR Generator</a>
-                </div>
-                <div class="link-col">
-                    <strong>Legal</strong>
-                    <a href="/privacy.html">Privacy Policy</a>
-                    <a href="/terms.html">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom container">
-            <p>&copy; 2026 devsnap.net. All rights reserved.</p>
-        </div>
-    </footer>
 
+            <div class="tool-container">
+                <div class="tool-box">
+                    <div class="upload-zone" id="drop-zone" style="margin-bottom: 0;">
+                        <input type="file" id="file-input" accept=".csv" multiple>
+                        <div class="drop-zone-icon">&#128196;</div>
+                        <div class="drop-zone-text">Drop CSV files here or click to upload</div>
+                        <div class="drop-zone-hint">Multiple files supported</div>
+                    </div>
+
+                    <div id="file-list-container" style="display: none; margin-top: var(--space-xl);">
+                        <h3 style="font-size: var(--font-size-md); margin-bottom: var(--space-md);">Files to Convert
+                        </h3>
+                        <div id="file-list"></div>
+
+                        <div class="actions-bar"
+                            style="display: flex; gap: var(--space-md); margin-top: var(--space-lg); justify-content: center;">
+                            <button class="btn btn-secondary btn-lg" id="btn-clear">&#8635; Clear All</button>
+                            <button class="btn btn-primary btn-lg" id="btn-convert">&#10515; Convert to Excel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="max-width: 900px;">
+                <div class="ad-slot" id="ad-csv-bottom">Ad Space</div>
+            </div>
+
+            <div class="tool-container">
+                <div class="tool-box"
+                    style="color: var(--text-secondary); font-size: var(--font-size-sm); line-height: 1.8;">
+                    <h2
+                        style="font-size: var(--font-size-lg); color: var(--text-primary); margin-bottom: var(--space-md);">
+                        About This Tool</h2>
+                    <p>This free CSV to Excel converter solves the common "garbled text" problem (文字化け in Japanese) when
+                        opening CSVs in Excel.</p>
+                    <p style="margin-top: var(--space-md);">It automatically detects encodings like <strong>Shift-JIS or
+                            UTF-8</strong> and correctly translates them into native XLSX spreadsheets.
+                        <strong>100% Client-Side:</strong> Your data never leaves your device. All conversions happen
+                        entirely inside your web browser for complete privacy and security.
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p class="footer-text">&copy; 2026 devsnap.net. All tools are free and open for everyone.</p>
+                    <ul class="footer-links">
+                        <li><a href="/privacy.html">Privacy</a></li>
+                        <li><a href="/terms.html">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
     <script src="/js/csv-to-excel.js" type="module"></script>
 </body>
 
