@@ -16,12 +16,14 @@
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="/css/style.css">
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3419132714949841" crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3419132714949841"
+    crossorigin="anonymous"></script>
   <style>
     /* Subscription Calculator Styles */
     .calc-section {
       padding: var(--space-3xl) 0;
     }
+
     .calc-box {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
@@ -30,18 +32,21 @@
       max-width: 900px;
       margin: 0 auto;
     }
+
     .calc-box h2 {
       font-size: var(--font-size-2xl);
       font-weight: 800;
       text-align: center;
       margin-bottom: var(--space-sm);
     }
+
     .calc-box .calc-subtitle {
       text-align: center;
       color: var(--text-secondary);
       font-size: var(--font-size-md);
       margin-bottom: var(--space-xl);
     }
+
     .preset-row {
       display: flex;
       flex-wrap: wrap;
@@ -49,6 +54,7 @@
       margin-bottom: var(--space-xl);
       justify-content: center;
     }
+
     .preset-btn {
       padding: var(--space-xs) var(--space-md);
       background: var(--bg-glass);
@@ -60,20 +66,50 @@
       cursor: pointer;
       transition: all var(--transition-fast);
     }
+
     .preset-btn:hover {
       background: var(--accent-primary);
       color: white;
       border-color: var(--accent-primary);
     }
+
     .calc-inputs {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: var(--space-md);
       margin-bottom: var(--space-lg);
     }
+
     @media (max-width: 600px) {
-      .calc-inputs { grid-template-columns: 1fr; }
+      .calc-inputs {
+        grid-template-columns: 1fr;
+      }
     }
+
+    .currency-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+      justify-content: center;
+    }
+
+    .currency-row label {
+      color: var(--text-secondary);
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+    }
+
+    .currency-row select {
+      padding: var(--space-xs) var(--space-md);
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+    }
+
     .calc-result {
       background: var(--bg-glass);
       border: 1px solid var(--border-subtle);
@@ -84,27 +120,85 @@
       line-height: 1.7;
       color: var(--text-secondary);
     }
-    .calc-result .accent { color: var(--accent-secondary); font-weight: 700; }
-    .calc-result .muted { color: var(--text-muted); font-size: var(--font-size-sm); }
+
+    .calc-result .accent {
+      color: var(--accent-secondary);
+      font-weight: 700;
+    }
+
+    .calc-result .muted {
+      color: var(--text-muted);
+      font-size: var(--font-size-sm);
+    }
+
     .chart-wrap {
       height: 300px;
       position: relative;
     }
-    .hidden { display: none !important; }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Dropdown Nav */
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .nav-dropdown>a {
+      cursor: pointer;
+    }
+
+    .nav-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-sm) 0;
+      min-width: 180px;
+      z-index: 100;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu {
+      display: block;
+    }
+
+    .nav-dropdown-menu a {
+      display: block;
+      padding: var(--space-xs) var(--space-lg);
+      color: var(--text-secondary);
+      font-size: var(--font-size-sm);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+
+    .nav-dropdown-menu a:hover {
+      color: var(--text-primary);
+      background: var(--bg-glass);
+    }
 
     /* Category Headers */
     .category-header {
       margin-bottom: var(--space-xl);
     }
+
     .category-header h3 {
       font-size: var(--font-size-xl);
       font-weight: 700;
       margin-bottom: var(--space-xs);
     }
+
     .category-header p {
       color: var(--text-muted);
       font-size: var(--font-size-sm);
     }
+
     .category-label {
       display: inline-block;
       padding: 2px var(--space-sm);
@@ -115,7 +209,8 @@
       border-radius: var(--radius-sm);
       margin-bottom: var(--space-sm);
     }
-    .tools-section + .tools-section {
+
+    .tools-section+.tools-section {
       border-top: 1px solid var(--border-subtle);
     }
   </style>
@@ -135,10 +230,25 @@
         <nav>
           <ul class="nav-links">
             <li><a href="/" class="active">Home</a></li>
-            <li><a href="/tools/bg-remover/">BG Remover</a></li>
-            <li><a href="/tools/image-compressor/">Compress</a></li>
-            <li><a href="/tools/image-converter/">Convert</a></li>
-            <li><a href="/tools/qr-generator/">QR</a></li>
+            <li class="nav-dropdown">
+              <a href="#">Image Tools &#9662;</a>
+              <div class="nav-dropdown-menu">
+                <a href="/tools/bg-remover/">Background Remover</a>
+                <a href="/tools/image-compressor/">Image Compressor</a>
+                <a href="/tools/image-converter/">Image Converter</a>
+              </div>
+            </li>
+            <li class="nav-dropdown">
+              <a href="#">Utility Tools &#9662;</a>
+              <div class="nav-dropdown-menu">
+                <a href="/tools/qr-generator/">QR Code Generator</a>
+                <a href="/tools/json-formatter/">JSON Formatter</a>
+                <a href="/tools/character-counter/">Character Counter</a>
+                <a href="/tools/password-generator/">Password Generator</a>
+                <a href="/tools/base64-tool/">Base64 Encoder</a>
+                <a href="/tools/color-converter/">Color Converter</a>
+              </div>
+            </li>
           </ul>
         </nav>
       </div>
@@ -172,6 +282,11 @@
             <h2>Subscription Break-Even Calculator</h2>
             <p class="calc-subtitle">Find out if your monthly subscription is really worth it.</p>
 
+            <div class="currency-row">
+              <label for="calc-currency">Currency:</label>
+              <select id="calc-currency"></select>
+            </div>
+
             <div class="preset-row" id="preset-buttons"></div>
 
             <div class="calc-inputs">
@@ -180,16 +295,18 @@
                 <input type="text" id="calc-service" class="form-input" placeholder="e.g. Adobe CC">
               </div>
               <div class="form-group" style="margin:0;">
-                <label class="form-label" for="calc-monthly">Monthly Fee (&yen;)</label>
-                <input type="number" id="calc-monthly" class="form-input" placeholder="e.g. 7780" min="1">
+                <label class="form-label" for="calc-monthly" id="currency-label-1">Monthly Fee ($)</label>
+                <input type="number" id="calc-monthly" class="form-input" placeholder="e.g. 69.99" min="0.01"
+                  step="0.01">
               </div>
               <div class="form-group" style="margin:0;">
-                <label class="form-label" for="calc-peruse">Cost per Single Use (&yen;)</label>
-                <input type="number" id="calc-peruse" class="form-input" placeholder="e.g. 3000" min="1">
+                <label class="form-label" for="calc-peruse" id="currency-label-2">Cost per Single Use ($)</label>
+                <input type="number" id="calc-peruse" class="form-input" placeholder="e.g. 25" min="0.01" step="0.01">
               </div>
             </div>
 
-            <button class="btn btn-primary btn-lg" id="calc-btn" style="width:100%; margin-bottom: var(--space-lg);">Calculate Break-Even Point</button>
+            <button class="btn btn-primary btn-lg" id="calc-btn"
+              style="width:100%; margin-bottom: var(--space-lg);">Calculate Break-Even Point</button>
 
             <div id="calc-result" class="calc-result hidden">
               <p id="calc-result-text"></p>
