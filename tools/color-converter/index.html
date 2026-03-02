@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Converter - HEX, RGB &amp; HSL | SnapTools</title>
+    <meta name="description"
+        content="Convert colors between HEX, RGB, and HSL formats instantly. Preview colors in real time. Free online color tool.">
+    <meta name="keywords" content="color converter, hex to rgb, rgb to hex, hsl converter, color picker, color tool">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://devsnap.net/tools/color-converter/">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .color-preview {
+            width: 100%;
+            height: 120px;
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--border-subtle);
+            transition: background 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: var(--space-md);
+        }
+
+        .color-preview-text {
+            background: rgba(0, 0, 0, 0.6);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs);
+            color: white;
+            font-family: monospace;
+        }
+
+        .color-input-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: var(--space-md);
+        }
+
+        @media (max-width: 600px) {
+            .color-input-group {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .color-format-box {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+        }
+
+        .color-format-box h3 {
+            font-size: var(--font-size-sm);
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: var(--space-md);
+        }
+
+        .color-format-box .value-display {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: var(--font-size-lg);
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+            word-break: break-all;
+        }
+
+        .slider-group {
+            margin-top: var(--space-md);
+        }
+
+        .slider-row {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-sm);
+        }
+
+        .slider-label {
+            width: 16px;
+            font-weight: 700;
+            font-size: var(--font-size-sm);
+            color: var(--text-muted);
+        }
+
+        .slider-value {
+            width: 44px;
+            text-align: right;
+            font-family: monospace;
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+
+        .color-slider {
+            -webkit-appearance: none;
+            flex: 1;
+            height: 8px;
+            border-radius: var(--radius-full);
+            outline: none;
+        }
+
+        .color-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+
+        #slider-r {
+            background: linear-gradient(to right, #000, #f00);
+        }
+
+        #slider-g {
+            background: linear-gradient(to right, #000, #0f0);
+        }
+
+        #slider-b {
+            background: linear-gradient(to right, #000, #00f);
+        }
+
+        #slider-h {
+            background: linear-gradient(to right, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
+        }
+
+        #slider-s {
+            background: linear-gradient(to right, #888, var(--accent-primary));
+        }
+
+        #slider-l {
+            background: linear-gradient(to right, #000, #888, #fff);
+        }
+
+        .picker-row {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .native-picker {
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            padding: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-gradient-orbs"></div>
+    <div class="page-wrapper">
+        <header class="site-header">
+            <div class="container">
+                <a href="/" class="logo">
+                    <div class="logo-icon">&#9889;</div>
+                    <span class="logo-text">SnapTools</span>
+                </a>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tools/qr-generator/">QR Generator</a></li>
+                        <li><a href="/tools/json-formatter/">JSON Formatter</a></li>
+                        <li><a href="/tools/character-counter/">Character Counter</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="tool-page-header">
+                <div class="container">
+                    <div class="breadcrumb">
+                        <a href="/">Home</a> <span>/</span> <span>Color Converter</span>
+                    </div>
+                    <h1>Color Converter</h1>
+                    <p>Convert colors between HEX, RGB, and HSL &mdash; with live preview.</p>
+                </div>
+            </div>
+
+            <div class="container" style="max-width: 900px;">
+                <div class="ad-slot" id="ad-color-top">Ad Space</div>
+            </div>
+
+            <div class="tool-container">
+                <div class="tool-box">
+                    <!-- Color preview -->
+                    <div class="color-preview" id="color-preview" style="background: #8b5cf6;">
+                        <span class="color-preview-text" id="preview-text">#8b5cf6</span>
+                    </div>
+
+                    <!-- Color picker -->
+                    <div class="picker-row" style="margin-top: var(--space-lg);">
+                        <input type="color" id="native-picker" class="native-picker" value="#8b5cf6">
+                        <div class="form-group" style="flex:1; margin:0;">
+                            <label class="form-label" for="hex-input">HEX</label>
+                            <input type="text" id="hex-input" class="form-input" value="#8b5cf6" placeholder="#000000">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RGB & HSL Sliders -->
+                <div class="tool-box">
+                    <div class="color-input-group">
+                        <div class="color-format-box">
+                            <h3>RGB</h3>
+                            <div class="value-display" id="rgb-display">rgb(139, 92, 246)</div>
+                            <div class="slider-group">
+                                <div class="slider-row">
+                                    <span class="slider-label" style="color:#ff6b6b;">R</span>
+                                    <input type="range" id="slider-r" class="color-slider" min="0" max="255"
+                                        value="139">
+                                    <span class="slider-value" id="val-r">139</span>
+                                </div>
+                                <div class="slider-row">
+                                    <span class="slider-label" style="color:#55efc4;">G</span>
+                                    <input type="range" id="slider-g" class="color-slider" min="0" max="255" value="92">
+                                    <span class="slider-value" id="val-g">92</span>
+                                </div>
+                                <div class="slider-row">
+                                    <span class="slider-label" style="color:#48dbfb;">B</span>
+                                    <input type="range" id="slider-b" class="color-slider" min="0" max="255"
+                                        value="246">
+                                    <span class="slider-value" id="val-b">246</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="color-format-box">
+                            <h3>HSL</h3>
+                            <div class="value-display" id="hsl-display">hsl(258, 90%, 66%)</div>
+                            <div class="slider-group">
+                                <div class="slider-row">
+                                    <span class="slider-label">H</span>
+                                    <input type="range" id="slider-h" class="color-slider" min="0" max="360"
+                                        value="258">
+                                    <span class="slider-value" id="val-h">258</span>
+                                </div>
+                                <div class="slider-row">
+                                    <span class="slider-label">S</span>
+                                    <input type="range" id="slider-s" class="color-slider" min="0" max="100" value="90">
+                                    <span class="slider-value" id="val-s">90%</span>
+                                </div>
+                                <div class="slider-row">
+                                    <span class="slider-label">L</span>
+                                    <input type="range" id="slider-l" class="color-slider" min="0" max="100" value="66">
+                                    <span class="slider-value" id="val-l">66%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="color-format-box">
+                            <h3>Values</h3>
+                            <div
+                                style="font-size: var(--font-size-xs); color: var(--text-muted); margin-bottom: var(--space-sm);">
+                                Click to copy</div>
+                            <button class="btn btn-secondary" id="copy-hex"
+                                style="width:100%; margin-bottom: var(--space-sm); font-family: monospace;">#8b5cf6</button>
+                            <button class="btn btn-secondary" id="copy-rgb"
+                                style="width:100%; margin-bottom: var(--space-sm); font-family: monospace;">rgb(139, 92,
+                                246)</button>
+                            <button class="btn btn-secondary" id="copy-hsl"
+                                style="width:100%; font-family: monospace;">hsl(258, 90%, 66%)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="max-width: 900px;">
+                <div class="ad-slot" id="ad-color-bottom">Ad Space</div>
+            </div>
+
+            <div class="tool-container">
+                <div class="tool-box"
+                    style="color: var(--text-secondary); font-size: var(--font-size-sm); line-height: 1.8;">
+                    <h2
+                        style="font-size: var(--font-size-lg); color: var(--text-primary); margin-bottom: var(--space-md);">
+                        About This Tool</h2>
+                    <p>This free Color Converter lets you convert between HEX, RGB, and HSL color formats. Use the
+                        sliders or enter a color value to see instant conversions and a live preview. Perfect for web
+                        designers and developers.</p>
+                    <p style="margin-top: var(--space-md);">HEX codes are used in HTML/CSS, RGB is commonly used in
+                        design tools, and HSL provides intuitive control over hue, saturation, and lightness. All
+                        conversions happen locally in your browser.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p class="footer-text">&copy; 2026 SnapTools. All tools are free and open for everyone.</p>
+                    <ul class="footer-links">
+                        <li><a href="/privacy.html">Privacy</a></li>
+                        <li><a href="/terms.html">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script type="module" src="/js/color-converter.js"></script>
+</body>
+
+</html>

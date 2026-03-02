@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator - Strong &amp; Secure Passwords | SnapTools</title>
+    <meta name="description"
+        content="Generate strong, secure passwords instantly. Customize length, include uppercase, lowercase, numbers, and symbols. Free online tool.">
+    <meta name="keywords"
+        content="password generator, strong password, secure password, random password, password maker">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://devsnap.net/tools/password-generator/">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .password-display {
+            font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+            font-size: 1.5rem;
+            text-align: center;
+            padding: var(--space-xl);
+            background: var(--bg-glass);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            word-break: break-all;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .strength-meter {
+            margin-top: var(--space-md);
+        }
+
+        .strength-bar {
+            height: 6px;
+            background: var(--bg-input);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+
+        .strength-bar-fill {
+            height: 100%;
+            border-radius: var(--radius-full);
+            transition: width 0.3s ease, background 0.3s ease;
+        }
+
+        .strength-label {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xs);
+            font-size: var(--font-size-xs);
+        }
+
+        .option-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-md) 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .option-row:last-child {
+            border-bottom: none;
+        }
+
+        .option-label {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        .toggle {
+            position: relative;
+            width: 48px;
+            height: 26px;
+            cursor: pointer;
+        }
+
+        .toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            inset: 0;
+            background: var(--bg-input);
+            border-radius: var(--radius-full);
+            transition: var(--transition-base);
+        }
+
+        .toggle-slider::before {
+            content: '';
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background: white;
+            border-radius: 50%;
+            transition: var(--transition-base);
+        }
+
+        .toggle input:checked+.toggle-slider {
+            background: var(--accent-primary);
+        }
+
+        .toggle input:checked+.toggle-slider::before {
+            transform: translateX(22px);
+        }
+
+        .length-display {
+            font-size: var(--font-size-3xl);
+            font-weight: 800;
+            color: var(--accent-primary);
+            min-width: 50px;
+            text-align: right;
+        }
+
+        .range-input {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: var(--radius-full);
+            background: var(--bg-input);
+            outline: none;
+        }
+
+        .range-input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--accent-primary);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-gradient-orbs"></div>
+    <div class="page-wrapper">
+        <header class="site-header">
+            <div class="container">
+                <a href="/" class="logo">
+                    <div class="logo-icon">&#9889;</div>
+                    <span class="logo-text">SnapTools</span>
+                </a>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tools/qr-generator/">QR Generator</a></li>
+                        <li><a href="/tools/json-formatter/">JSON Formatter</a></li>
+                        <li><a href="/tools/character-counter/">Character Counter</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="tool-page-header">
+                <div class="container">
+                    <div class="breadcrumb">
+                        <a href="/">Home</a> <span>/</span> <span>Password Generator</span>
+                    </div>
+                    <h1>Password Generator</h1>
+                    <p>Generate strong, secure passwords instantly. Everything stays in your browser.</p>
+                </div>
+            </div>
+
+            <div class="container" style="max-width: 900px;">
+                <div class="ad-slot" id="ad-pw-top">Ad Space</div>
+            </div>
+
+            <div class="tool-container">
+                <div class="tool-box">
+                    <!-- Password display -->
+                    <div class="password-display" id="password-display">Click Generate</div>
+
+                    <!-- Strength meter -->
+                    <div class="strength-meter">
+                        <div class="strength-bar">
+                            <div class="strength-bar-fill" id="strength-fill" style="width: 0%;"></div>
+                        </div>
+                        <div class="strength-label">
+                            <span id="strength-text" style="color: var(--text-muted);">Strength</span>
+                            <span id="entropy-text" style="color: var(--text-muted);"></span>
+                        </div>
+                    </div>
+
+                    <div class="btn-group" style="margin-top: var(--space-lg);">
+                        <button id="pw-generate" class="btn btn-primary btn-lg" style="flex:1;">Generate
+                            Password</button>
+                        <button id="pw-copy" class="btn btn-secondary btn-lg">Copy</button>
+                    </div>
+                </div>
+
+                <!-- Options -->
+                <div class="tool-box">
+                    <div
+                        style="display: flex; align-items: center; gap: var(--space-lg); margin-bottom: var(--space-lg);">
+                        <label class="form-label" style="margin:0; flex:1;">Password Length</label>
+                        <span class="length-display" id="length-display">16</span>
+                    </div>
+                    <input type="range" id="pw-length" class="range-input" min="4" max="64" value="16">
+
+                    <div style="margin-top: var(--space-xl);">
+                        <div class="option-row">
+                            <span class="option-label">Uppercase Letters (A-Z)</span>
+                            <label class="toggle"><input type="checkbox" id="opt-upper" checked><span
+                                    class="toggle-slider"></span></label>
+                        </div>
+                        <div class="option-row">
+                            <span class="option-label">Lowercase Letters (a-z)</span>
+                            <label class="toggle"><input type="checkbox" id="opt-lower" checked><span
+                                    class="toggle-slider"></span></label>
+                        </div>
+                        <div class="option-row">
+                            <span class="option-label">Numbers (0-9)</span>
+                            <label class="toggle"><input type="checkbox" id="opt-numbers" checked><span
+                                    class="toggle-slider"></span></label>
+                        </div>
+                        <div class="option-row">
+                            <span class="option-label">Symbols (!@#$%...)</span>
+                            <label class="toggle"><input type="checkbox" id="opt-symbols" checked><span
+                                    class="toggle-slider"></span></label>
+                        </div>
+                        <div class="option-row">
+                            <span class="option-label">Exclude Ambiguous (l, 1, I, O, 0)</span>
+                            <label class="toggle"><input type="checkbox" id="opt-exclude-ambiguous"><span
+                                    class="toggle-slider"></span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="max-width: 900px;">
+                <div class="ad-slot" id="ad-pw-bottom">Ad Space</div>
+            </div>
+
+            <div class="tool-container">
+                <div class="tool-box"
+                    style="color: var(--text-secondary); font-size: var(--font-size-sm); line-height: 1.8;">
+                    <h2
+                        style="font-size: var(--font-size-lg); color: var(--text-primary); margin-bottom: var(--space-md);">
+                        About This Tool</h2>
+                    <p>This free Password Generator creates cryptographically strong, random passwords using your
+                        browser's built-in secure random number generator. No passwords are ever stored, transmitted, or
+                        logged &mdash; everything happens locally.</p>
+                    <p style="margin-top: var(--space-md);">A strong password should be at least 12 characters long and
+                        include a mix of uppercase letters, lowercase letters, numbers, and symbols. Use a unique
+                        password for every account to stay safe online.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p class="footer-text">&copy; 2026 SnapTools. All tools are free and open for everyone.</p>
+                    <ul class="footer-links">
+                        <li><a href="/privacy.html">Privacy</a></li>
+                        <li><a href="/terms.html">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script type="module" src="/js/password-generator.js"></script>
+</body>
+
+</html>

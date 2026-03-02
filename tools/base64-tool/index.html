@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base64 Encoder &amp; Decoder - Free Online Tool | SnapTools</title>
+    <meta name="description"
+        content="Encode and decode Base64 strings instantly. Convert text to Base64 and Base64 to text. Free online tool, no sign-up required.">
+    <meta name="keywords"
+        content="base64 encoder, base64 decoder, base64 converter, encode base64, decode base64 online">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://devsnap.net/tools/base64-tool/">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .mode-toggle {
+            display: flex;
+            background: var(--bg-glass);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-subtle);
+            overflow: hidden;
+        }
+
+        .mode-btn {
+            flex: 1;
+            padding: var(--space-md) var(--space-lg);
+            background: transparent;
+            color: var(--text-secondary);
+            border: none;
+            cursor: pointer;
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            transition: var(--transition-base);
+        }
+
+        .mode-btn.active {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .swap-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bg-glass);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin: var(--space-md) auto;
+            transition: var(--transition-base);
+        }
+
+        .swap-btn:hover {
+            background: var(--accent-primary);
+            color: white;
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-gradient-orbs"></div>
+    <div class="page-wrapper">
+        <header class="site-header">
+            <div class="container">
+                <a href="/" class="logo">
+                    <div class="logo-icon">&#9889;</div>
+                    <span class="logo-text">SnapTools</span>
+                </a>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tools/qr-generator/">QR Generator</a></li>
+                        <li><a href="/tools/json-formatter/">JSON Formatter</a></li>
+                        <li><a href="/tools/character-counter/">Character Counter</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="tool-page-header">
+                <div class="container">
+                    <div class="breadcrumb">
+                        <a href="/">Home</a> <span>/</span> <span>Base64 Encoder/Decoder</span>
+                    </div>
+                    <h1>Base64 Encoder &amp; Decoder</h1>
+                    <p>Encode text to Base64 or decode Base64 to text &mdash; instantly.</p>
+                </div>
+            </div>
+
+            <div class="container" style="max-width: 900px;">
+                <div class="ad-slot" id="ad-b64-top">Ad Space</div>
+            </div>
+
+            <div class="tool-container">
+                <div class="tool-box">
+                    <!-- Mode Toggle -->
+                    <div class="mode-toggle" style="margin-bottom: var(--space-lg);">
+                        <button class="mode-btn active" id="mode-encode">Encode</button>
+                        <button class="mode-btn" id="mode-decode">Decode</button>
+                    </div>
+
+                    <!-- Input -->
+                    <div class="form-group">
+                        <label class="form-label" id="input-label" for="b64-input">Text to Encode</label>
+                        <textarea id="b64-input" class="form-textarea" rows="6"
+                            placeholder="Enter text here..."></textarea>
+                    </div>
+
+                    <button class="swap-btn" id="b64-swap" title="Swap input and output">&#8645;</button>
+
+                    <!-- Output -->
+                    <div class="form-group">
+                        <label class="form-label" id="output-label">Base64 Output</label>
+                        <textarea id="b64-output" class="form-textarea" rows="6" readonly
+                            placeholder="Result will appear here..."></textarea>
+                    </div>
+
+                    <div class="btn-group">
+                        <button id="b64-convert" class="btn btn-primary btn-lg" style="flex:1;">Convert</button>
+                        <button id="b64-copy" class="btn btn-secondary btn-lg">Copy Result</button>
+                        <button id="b64-clear" class="btn btn-secondary btn-lg">Clear</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="max-width: 900px;">
+                <div class="ad-slot" id="ad-b64-bottom">Ad Space</div>
+            </div>
+
+            <div class="tool-container">
+                <div class="tool-box"
+                    style="color: var(--text-secondary); font-size: var(--font-size-sm); line-height: 1.8;">
+                    <h2
+                        style="font-size: var(--font-size-lg); color: var(--text-primary); margin-bottom: var(--space-md);">
+                        About This Tool</h2>
+                    <p>Base64 is a binary-to-text encoding scheme that represents binary data as an ASCII string. It is
+                        commonly used to embed images in CSS/HTML, encode email attachments, and transmit data in URLs
+                        or APIs.</p>
+                    <p style="margin-top: var(--space-md);">This tool encodes and decodes Base64 strings entirely in
+                        your browser using JavaScript's built-in <code>btoa()</code> and <code>atob()</code> functions
+                        &mdash; no data is ever sent to a server.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p class="footer-text">&copy; 2026 SnapTools. All tools are free and open for everyone.</p>
+                    <ul class="footer-links">
+                        <li><a href="/privacy.html">Privacy</a></li>
+                        <li><a href="/terms.html">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script type="module" src="/js/base64-tool.js"></script>
+</body>
+
+</html>
