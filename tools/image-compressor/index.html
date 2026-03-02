@@ -161,30 +161,30 @@
                 
                 <nav>
           <ul class="nav-links">
-            <li><a href="/">Home</a></li>
+            <li><a href="/" data-i18n="nav_home">Home</a></li>
             <li>
               <details class="nav-details">
-                <summary>Image Tools</summary>
+                <summary data-i18n="nav_image_tools">Image Tools</summary>
                 <div class="nav-details-menu">
-                  <a href="/tools/bg-remover/">Background Remover</a>
-                  <a href="/tools/image-compressor/">Image Compressor</a>
-                  <a href="/tools/image-converter/">Image Converter</a>
+                  <a href="/tools/bg-remover/" data-i18n="nav_bg_remover">Background Remover</a>
+                  <a href="/tools/image-compressor/" data-i18n="nav_img_compressor">Image Compressor</a>
+                  <a href="/tools/image-converter/" data-i18n="nav_img_converter">Image Converter</a>
                 </div>
               </details>
             </li>
             <li>
               <details class="nav-details">
-                <summary>Utility Tools</summary>
+                <summary data-i18n="nav_utility_tools">Utility Tools</summary>
                 <div class="nav-details-menu">
-                  <a href="/tools/pdf-to-word/">PDF to Word</a>
-                                    <a href="/tools/text-formatter/">Text Formatter</a>
-                                <a href="/tools/csv-to-excel/">CSV to Excel</a>
-                <a href="/tools/qr-generator/">QR Code Generator</a>
-                  <a href="/tools/json-formatter/">JSON Formatter</a>
-                  <a href="/tools/character-counter/">Character Counter</a>
-                  <a href="/tools/password-generator/">Password Generator</a>
-                  <a href="/tools/base64-tool/">Base64 Encoder</a>
-                  <a href="/tools/color-converter/">Color Converter</a>
+                  <a href="/tools/pdf-to-word/" data-i18n="nav_pdf_word">PDF to Word</a>
+                                    <a href="/tools/text-formatter/" data-i18n="nav_text_formatter">Text Formatter</a>
+                                <a href="/tools/csv-to-excel/" data-i18n="nav_csv_excel">CSV to Excel</a>
+                <a href="/tools/qr-generator/" data-i18n="nav_qr">QR Code Generator</a>
+                  <a href="/tools/json-formatter/" data-i18n="nav_json">JSON Formatter</a>
+                  <a href="/tools/character-counter/" data-i18n="nav_counter">Character Counter</a>
+                  <a href="/tools/password-generator/" data-i18n="nav_password">Password Generator</a>
+                  <a href="/tools/base64-tool/" data-i18n="nav_base64">Base64 Encoder</a>
+                  <a href="/tools/color-converter/" data-i18n="nav_color">Color Converter</a>
                 </div>
               </details>
             </li>
@@ -200,13 +200,13 @@
         <main class="main-content">
             <div class="tool-page-header">
                 <div class="container">
-                    <div class="breadcrumb"><a href="/">Home</a> <span>/</span> <span>Image Compressor</span></div>
-                    <h1>Compress Images</h1>
-                    <p>Reduce file size without losing quality &mdash; JPG, PNG, WebP supported.</p>
+                    <div class="breadcrumb"><a href="/">Home</a> <span>/</span> <span data-i18n="breadcrumb_page">Image Compressor</span></div>
+                    <h1 data-i18n="page_title">Compress Images</h1>
+                    <p data-i18n="page_desc">Reduce file size without losing quality &mdash; JPG, PNG, WebP supported.</p>
                 </div>
             </div>
             <div class="container" style="max-width:900px;">
-                <div class="ad-slot" id="ad-comp-top">Ad Space</div>
+                <div class="ad-slot" id="ad-comp-top" data-i18n="ad_space">Ad Space</div>
             </div>
             <div class="tool-container">
                 <div class="tool-box">
@@ -218,8 +218,8 @@
                     <div class="drop-zone" id="drop-zone">
                         <input type="file" id="file-input" accept="image/png,image/jpeg,image/webp" multiple>
                         <div class="drop-zone-icon">&#128230;</div>
-                        <div class="drop-zone-text">Drop images here or click to upload</div>
-                        <div class="drop-zone-hint">JPG, PNG, WebP &mdash; Multiple files supported</div>
+                        <div class="drop-zone-text" data-i18n="drop_text">Drop images here or click to upload</div>
+                        <div class="drop-zone-hint" data-i18n="drop_hint">JPG, PNG, WebP &mdash; Multiple files supported</div>
                     </div>
                     <div id="results-section" class="hidden" style="margin-top: var(--space-xl);">
                         <div class="results-list" id="results-list"></div>
@@ -230,7 +230,7 @@
                 </div>
             </div>
             <div class="container" style="max-width:900px;">
-                <div class="ad-slot" id="ad-comp-bottom">Ad Space</div>
+                <div class="ad-slot" id="ad-comp-bottom" data-i18n="ad_space">Ad Space</div>
             </div>
             <div class="tool-container">
                 <div class="tool-box"
@@ -247,11 +247,11 @@
         <footer class="site-footer">
             <div class="container">
                 <div class="footer-content">
-                    <p class="footer-text">&copy; 2026 devsnap.net. All tools are free and open for everyone.</p>
+                    <p class="footer-text" data-i18n="footer_copy">&copy; 2026 devsnap.net. All tools are free and open for everyone.</p>
                     <ul class="footer-links">
                         <li><a href="/privacy.html" data-i18n="footer_privacy">Privacy</a></li>
                         <li><a href="/terms.html" data-i18n="footer_terms">Terms</a></li>
-                        <li><a href="https://forms.gle/vPqL6f34aR8vX8Z97" target="_blank" rel="noopener noreferrer">Feedback & Requests</a></li>
+                        <li><a href="https://forms.gle/vPqL6f34aR8vX8Z97" target="_blank" rel="noopener noreferrer" data-i18n="footer_feedback">Feedback & Requests</a></li>
                     </ul>
                 </div>
             </div>
@@ -261,6 +261,20 @@
   <script>
 window._i18n = {
   en: {
+    status_loading: 'Loading AI model...',
+    ad_space: 'Ad Space',
+    nav_color: 'Color Converter',
+    nav_base64: 'Base64 Encoder',
+    nav_password: 'Password Generator',
+    nav_counter: 'Character Counter',
+    nav_json: 'JSON Formatter',
+    nav_qr: 'QR Code Generator',
+    nav_csv_excel: 'CSV to Excel',
+    nav_text_formatter: 'Text Formatter',
+    nav_pdf_word: 'PDF to Word',
+    nav_img_converter: 'Image Converter',
+    nav_img_compressor: 'Image Compressor',
+    nav_bg_remover: 'Background Remover',
     nav_home: 'Home',
     nav_image_tools: 'Image Tools',
     nav_utility_tools: 'Utility Tools',
