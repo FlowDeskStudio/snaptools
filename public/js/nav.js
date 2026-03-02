@@ -1,4 +1,4 @@
-// Mobile hamburger menu & dropdown toggle — iOS Safari compatible
+// Mobile hamburger menu toggle
 (function () {
     function init() {
         var hamburger = document.querySelector('.hamburger-btn');
@@ -18,52 +18,16 @@
         // --- Close on overlay tap ---
         if (overlay) {
             overlay.addEventListener('click', function () {
-                closeMenu();
+                nav.classList.remove('open');
+                hamburger.classList.remove('active');
+                overlay.classList.remove('open');
+
+                // Also close any open details/summary dropdowns
+                var openDetails = nav.querySelectorAll('details[open]');
+                for (var i = 0; i < openDetails.length; i++) {
+                    openDetails[i].removeAttribute('open');
+                }
             });
-        }
-
-        // --- Dropdown toggle (click only, no touchend to avoid double-fire) ---
-        var dropdownLinks = document.querySelectorAll('.nav-dropdown > a');
-        for (var i = 0; i < dropdownLinks.length; i++) {
-            dropdownLinks[i].setAttribute('href', 'javascript:void(0)');
-            dropdownLinks[i].addEventListener('click', handleDropdownClick);
-        }
-
-        function handleDropdownClick(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            var parent = this.parentElement;
-
-            // Close all other dropdowns
-            var all = document.querySelectorAll('.nav-dropdown.open');
-            for (var j = 0; j < all.length; j++) {
-                if (all[j] !== parent) all[j].classList.remove('open');
-            }
-
-            // Toggle this one
-            parent.classList.toggle('open');
-        }
-
-        // --- Close dropdowns on outside click ---
-        document.addEventListener('click', function (e) {
-            // Don't close if clicking inside a dropdown or the hamburger
-            if (e.target.closest && e.target.closest('.nav-dropdown')) return;
-            if (e.target.closest && e.target.closest('.hamburger-btn')) return;
-
-            var openDropdowns = document.querySelectorAll('.nav-dropdown.open');
-            for (var i = 0; i < openDropdowns.length; i++) {
-                openDropdowns[i].classList.remove('open');
-            }
-        });
-
-        function closeMenu() {
-            nav.classList.remove('open');
-            hamburger.classList.remove('active');
-            if (overlay) overlay.classList.remove('open');
-            var openDropdowns = document.querySelectorAll('.nav-dropdown.open');
-            for (var i = 0; i < openDropdowns.length; i++) {
-                openDropdowns[i].classList.remove('open');
-            }
         }
     }
 
@@ -73,3 +37,4 @@
         init();
     }
 })();
+
