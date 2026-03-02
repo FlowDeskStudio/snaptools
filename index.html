@@ -12,7 +12,7 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://devsnap.net/">
   <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3419132714949841"
     crossorigin="anonymous"></script>
@@ -197,10 +197,10 @@
 
         <nav>
           <ul class="nav-links">
-            <li><a href="/">Home</a></li>
+            <li><a href="/" data-i18n="nav_home">Home</a></li>
             <li>
               <details class="nav-details">
-                <summary>Image Tools</summary>
+                <summary data-i18n="nav_image_tools">Image Tools</summary>
                 <div class="nav-details-menu">
                   <a href="/tools/bg-remover/">Background Remover</a>
                   <a href="/tools/image-compressor/">Image Compressor</a>
@@ -210,7 +210,7 @@
             </li>
             <li>
               <details class="nav-details">
-                <summary>Utility Tools</summary>
+                <summary data-i18n="nav_utility_tools">Utility Tools</summary>
                 <div class="nav-details-menu">
                   <a href="/tools/csv-to-excel/">CSV to Excel</a>
                   <a href="/tools/qr-generator/">QR Code Generator</a>
@@ -234,17 +234,17 @@
         <div class="container">
           <div class="hero-badge">
             <span class="dot"></span>
-            100% Free &mdash; No Sign-up Required
+            <span data-i18n="hero_badge">100% Free &mdash; No Sign-up Required</span>
           </div>
-          <h1>
+          <h1 data-i18n="hero_title_html">
             Stop Paying for Tools<br>
             <span class="gradient-text">You Barely Use.</span>
           </h1>
-          <p class="hero-subtitle">
+          <p class="hero-subtitle" data-i18n="hero_subtitle">
             Free alternatives to features locked behind expensive subscriptions.
             Everything runs in your browser &mdash; your files never leave your device.
           </p>
-          <a href="#calculator" class="btn btn-primary btn-lg">Am I Overpaying? &darr;</a>
+          <a href="#calculator" class="btn btn-primary btn-lg" data-i18n="hero_cta">Am I Overpaying? &darr;</a>
         </div>
       </section>
 
@@ -252,11 +252,12 @@
       <section class="calc-section" id="calculator">
         <div class="container">
           <div class="calc-box">
-            <h2>Subscription Break-Even Calculator</h2>
-            <p class="calc-subtitle">Find out if your monthly subscription is really worth it.</p>
+            <h2 data-i18n="calc_title">Subscription Break-Even Calculator</h2>
+            <p class="calc-subtitle" data-i18n="calc_subtitle">Find out if your monthly subscription is really worth it.
+            </p>
 
             <div class="currency-row">
-              <label for="calc-currency">Currency:</label>
+              <label for="calc-currency" data-i18n="calc_currency_label">Currency:</label>
               <select id="calc-currency"></select>
             </div>
 
@@ -264,7 +265,7 @@
 
             <div class="calc-inputs">
               <div class="form-group" style="margin:0;">
-                <label class="form-label" for="calc-service">Service Name</label>
+                <label class="form-label" for="calc-service" data-i18n="calc_service_label">Service Name</label>
                 <input type="text" id="calc-service" class="form-input" placeholder="e.g. Adobe CC">
               </div>
               <div class="form-group" style="margin:0;">
@@ -278,8 +279,8 @@
               </div>
             </div>
 
-            <button class="btn btn-primary btn-lg" id="calc-btn"
-              style="width:100%; margin-bottom: var(--space-lg);">Calculate Break-Even Point</button>
+            <button class="btn btn-primary btn-lg" id="calc-btn" style="width:100%; margin-bottom: var(--space-lg);"
+              data-i18n="calc_btn">Calculate Break-Even Point</button>
 
             <div id="calc-result" class="calc-result hidden">
               <p id="calc-result-text"></p>
@@ -301,33 +302,37 @@
       <section class="tools-section" id="tools">
         <div class="container">
           <div class="section-header">
-            <h2>Pick a Tool</h2>
-            <p>Everything runs in your browser &mdash; your files never leave your device.</p>
+            <h2 data-i18n="tools_heading">Pick a Tool</h2>
+            <p data-i18n="tools_subheading">Everything runs in your browser &mdash; your files never leave your device.
+            </p>
           </div>
 
           <div class="category-header">
             <span class="category-label">Image Tools</span>
             <h3>Work with Images &mdash; Free</h3>
-            <p>No watermarks, no limits, no sign-up.</p>
+            <p data-i18n="cat_image_desc">No watermarks, no limits, no sign-up.</p>
           </div>
           <div class="tools-grid">
             <a href="/tools/bg-remover/" class="tool-card" id="card-bgremover">
               <div class="tool-card-icon">&#9988;</div>
-              <h3>Background Remover</h3>
-              <p>Remove image backgrounds instantly with AI. Works offline in your browser. No upload needed.</p>
-              <span class="tool-card-link">Open Tool <span class="arrow">&rarr;</span></span>
+              <h3 data-i18n="card_bg_title">Background Remover</h3>
+              <p data-i18n="card_bg_desc">Remove image backgrounds instantly with AI. Works offline in your browser. No
+                upload needed.</p>
+              <span class="tool-card-link" data-i18n="card_open">Open Tool <span class="arrow">&rarr;</span></span>
             </a>
             <a href="/tools/image-compressor/" class="tool-card" id="card-compress">
               <div class="tool-card-icon">&#128230;</div>
-              <h3>Image Compressor</h3>
-              <p>Shrink image file sizes without losing quality. Perfect for email and web. JPG, PNG, WebP.</p>
-              <span class="tool-card-link">Open Tool <span class="arrow">&rarr;</span></span>
+              <h3 data-i18n="card_compress_title">Image Compressor</h3>
+              <p data-i18n="card_compress_desc">Shrink image file sizes without losing quality. Perfect for email and
+                web. JPG, PNG, WebP.</p>
+              <span class="tool-card-link" data-i18n="card_open">Open Tool <span class="arrow">&rarr;</span></span>
             </a>
             <a href="/tools/image-converter/" class="tool-card" id="card-imgconvert">
               <div class="tool-card-icon">&#128257;</div>
-              <h3>Image Converter</h3>
-              <p>Convert images between JPG, PNG, and WebP. Batch convert multiple files at once.</p>
-              <span class="tool-card-link">Open Tool <span class="arrow">&rarr;</span></span>
+              <h3 data-i18n="card_imgconv_title">Image Converter</h3>
+              <p data-i18n="card_imgconv_desc">Convert images between JPG, PNG, and WebP. Batch convert multiple files
+                at once.</p>
+              <span class="tool-card-link" data-i18n="card_open">Open Tool <span class="arrow">&rarr;</span></span>
             </a>
           </div>
         </div>
@@ -339,62 +344,68 @@
           <div class="category-header" style="margin-top: var(--space-2xl);">
             <span class="category-label">Utility Tools</span>
             <h3>Everyday Utilities</h3>
-            <p>Quick tools for common tasks.</p>
+            <p data-i18n="cat_utility_desc">Quick tools for common tasks.</p>
           </div>
           <div class="tools-grid">
             <a href="/tools/pdf-to-word/" class="tool-card" id="card-pdf">
               <div class="tool-card-icon">&#128196;</div>
-              <h3>PDF to Word</h3>
-              <p>Extract text from PDFs to editable Word documents. Completely free and browser-based.</p>
-              <span class="tool-card-link">Open Tool <span class="arrow">&rarr;</span></span>
+              <h3 data-i18n="card_pdf_title">PDF to Word</h3>
+              <p data-i18n="card_pdf_desc">Extract text from PDFs to editable Word documents. Completely free and
+                browser-based.</p>
+              <span class="tool-card-link" data-i18n="card_open">Open Tool <span class="arrow">&rarr;</span></span>
             </a>
             <a href="/tools/text-formatter/" class="tool-card" id="card-text">
               <div class="tool-card-icon">&#128221;</div>
-              <h3>Text Formatter</h3>
-              <p>Instantly clean up messy text, normalize characters, and fix spacing. Free and private.</p>
-              <span class="tool-card-link">Open Tool <span class="arrow">&rarr;</span></span>
+              <h3 data-i18n="card_text_title">Text Formatter</h3>
+              <p data-i18n="card_text_desc">Instantly clean up messy text, normalize characters, and fix spacing. Free
+                and private.</p>
+              <span class="tool-card-link" data-i18n="card_open">Open Tool <span class="arrow">&rarr;</span></span>
             </a>
             <a href="/tools/csv-to-excel/" class="tool-card" id="card-csv">
               <div class="tool-card-icon">&#128202;</div>
-              <h3>CSV to Excel</h3>
-              <p>Convert CSV to XLSX instantly. Auto-detects encoding to fix garbled text (Shift-JIS support).</p>
-              <span class="tool-card-link">Open Tool <span class="arrow">&rarr;</span></span>
+              <h3 data-i18n="card_csv_title">CSV to Excel</h3>
+              <p data-i18n="card_csv_desc">Convert CSV to XLSX instantly. Auto-detects encoding to fix garbled text
+                (Shift-JIS support).</p>
+              <span class="tool-card-link" data-i18n="card_open">Open Tool <span class="arrow">&rarr;</span></span>
             </a>
             <a href="/tools/qr-generator/" class="tool-card" id="card-qr">
               <div class="tool-card-icon">&#128241;</div>
-              <h3>QR Code Generator</h3>
-              <p>Generate QR codes from any text or URL. Download as PNG. Customize size and colors.</p>
-              <span class="tool-card-link">Open Tool <span class="arrow">&rarr;</span></span>
+              <h3 data-i18n="card_qr_title">QR Code Generator</h3>
+              <p data-i18n="card_qr_desc">Generate QR codes from any text or URL. Download as PNG. Customize size and
+                colors.</p>
+              <span class="tool-card-link" data-i18n="card_open">Open Tool <span class="arrow">&rarr;</span></span>
             </a>
             <a href="/tools/json-formatter/" class="tool-card" id="card-json">
               <div class="tool-card-icon">{ }</div>
-              <h3>JSON Formatter</h3>
-              <p>Format, validate, and beautify your JSON data. Spot errors with syntax highlighting.</p>
-              <span class="tool-card-link">Open Tool <span class="arrow">&rarr;</span></span>
+              <h3 data-i18n="card_json_title">JSON Formatter</h3>
+              <p data-i18n="card_json_desc">Format, validate, and beautify your JSON data. Spot errors with syntax
+                highlighting.</p>
+              <span class="tool-card-link" data-i18n="card_open">Open Tool <span class="arrow">&rarr;</span></span>
             </a>
             <a href="/tools/character-counter/" class="tool-card" id="card-counter">
               <div class="tool-card-icon">&#128292;</div>
-              <h3>Character Counter</h3>
-              <p>Count characters, words, sentences, and paragraphs in real time.</p>
-              <span class="tool-card-link">Open Tool <span class="arrow">&rarr;</span></span>
+              <h3 data-i18n="card_counter_title">Character Counter</h3>
+              <p data-i18n="card_counter_desc">Count characters, words, sentences, and paragraphs in real time.</p>
+              <span class="tool-card-link" data-i18n="card_open">Open Tool <span class="arrow">&rarr;</span></span>
             </a>
             <a href="/tools/password-generator/" class="tool-card" id="card-password">
               <div class="tool-card-icon">&#128274;</div>
-              <h3>Password Generator</h3>
-              <p>Generate strong, secure passwords with customizable length and options.</p>
-              <span class="tool-card-link">Open Tool <span class="arrow">&rarr;</span></span>
+              <h3 data-i18n="card_password_title">Password Generator</h3>
+              <p data-i18n="card_password_desc">Generate strong, secure passwords with customizable length and options.
+              </p>
+              <span class="tool-card-link" data-i18n="card_open">Open Tool <span class="arrow">&rarr;</span></span>
             </a>
             <a href="/tools/base64-tool/" class="tool-card" id="card-base64">
               <div class="tool-card-icon">&lt;/&gt;</div>
-              <h3>Base64 Encoder/Decoder</h3>
-              <p>Encode or decode Base64 text instantly. Supports Unicode characters.</p>
-              <span class="tool-card-link">Open Tool <span class="arrow">&rarr;</span></span>
+              <h3 data-i18n="card_base64_title">Base64 Encoder/Decoder</h3>
+              <p data-i18n="card_base64_desc">Encode or decode Base64 text instantly. Supports Unicode characters.</p>
+              <span class="tool-card-link" data-i18n="card_open">Open Tool <span class="arrow">&rarr;</span></span>
             </a>
             <a href="/tools/color-converter/" class="tool-card" id="card-color">
               <div class="tool-card-icon">&#127912;</div>
-              <h3>Color Converter</h3>
-              <p>Convert between HEX, RGB, and HSL with live preview and sliders.</p>
-              <span class="tool-card-link">Open Tool <span class="arrow">&rarr;</span></span>
+              <h3 data-i18n="card_color_title">Color Converter</h3>
+              <p data-i18n="card_color_desc">Convert between HEX, RGB, and HSL with live preview and sliders.</p>
+              <span class="tool-card-link" data-i18n="card_open">Open Tool <span class="arrow">&rarr;</span></span>
             </a>
           </div>
         </div>
@@ -410,17 +421,130 @@
     <footer class="site-footer">
       <div class="container">
         <div class="footer-content">
-          <p class="footer-text">&copy; 2026 devsnap.net. All tools are free and open for everyone.</p>
+          <p class="footer-text" data-i18n="footer_copy">&copy; 2026 devsnap.net. All tools are free and open for
+            everyone.</p>
           <ul class="footer-links">
-            <li><a href="/privacy.html">Privacy</a></li>
-            <li><a href="/terms.html">Terms</a></li>
-                        <li><a href="https://forms.gle/vPqL6f34aR8vX8Z97" target="_blank" rel="noopener noreferrer">Feedback & Requests</a></li>
+            <li><a href="/privacy.html" data-i18n="footer_privacy">Privacy</a></li>
+            <li><a href="/terms.html" data-i18n="footer_terms">Terms</a></li>
+            <li><a href="https://forms.gle/vPqL6f34aR8vX8Z97" target="_blank" rel="noopener noreferrer">Feedback &
+                Requests</a></li>
           </ul>
         </div>
       </div>
     </footer>
   </div>
   <script type="module" src="/js/subscription-calc.js"></script>
+  <script>
+    window._i18n = {
+      en: {
+        _pageTitle: 'devsnap.net — Free Online Tools You'd Otherwise Pay For',
+    _pageDescription: 'Stop paying monthly fees for tools you barely use. Free image background remover, image compressor, QR generator, and more. No sign-up required.',
+        hero_badge: '100% Free — No Sign-up Required',
+        hero_title_html: 'Stop Paying for Tools<br><span class="gradient-text">You Barely Use.</span>',
+        hero_subtitle: 'Free alternatives to features locked behind expensive subscriptions. Everything runs in your browser — your files never leave your device.',
+        hero_cta: 'Am I Overpaying? ↓',
+        calc_title: 'Subscription Break-Even Calculator',
+        calc_subtitle: 'Find out if your monthly subscription is really worth it.',
+        calc_currency_label: 'Currency:',
+        calc_service_label: 'Service Name',
+        calc_btn: 'Calculate Break-Even Point',
+        tools_heading: 'Pick a Tool',
+        tools_subheading: 'Everything runs in your browser — your files never leave your device.',
+        cat_image: 'Image Tools',
+        cat_image_title: 'Work with Images — Free',
+        cat_image_desc: 'No watermarks, no limits, no sign-up.',
+        card_bg_title: 'Background Remover',
+        card_bg_desc: 'Remove image backgrounds instantly with AI. Works offline in your browser. No upload needed.',
+        card_compress_title: 'Image Compressor',
+        card_compress_desc: 'Shrink image file sizes without losing quality. Perfect for email and web. JPG, PNG, WebP.',
+        card_imgconv_title: 'Image Converter',
+        card_imgconv_desc: 'Convert images between JPG, PNG, and WebP. Batch convert multiple files at once.',
+        card_open: 'Open Tool →',
+        cat_utility: 'Utility Tools',
+        cat_utility_title: 'Everyday Utilities',
+        cat_utility_desc: 'Quick tools for common tasks.',
+        card_pdf_title: 'PDF to Word',
+        card_pdf_desc: 'Extract text from PDFs to editable Word documents. Completely free and browser-based.',
+        card_text_title: 'Text Formatter',
+        card_text_desc: 'Instantly clean up messy text, normalize characters, and fix spacing. Free and private.',
+        card_csv_title: 'CSV to Excel',
+        card_csv_desc: 'Convert CSV to XLSX instantly. Auto-detects encoding to fix garbled text (Shift-JIS support).',
+        card_qr_title: 'QR Code Generator',
+        card_qr_desc: 'Generate QR codes from any text or URL. Download as PNG. Customize size and colors.',
+        card_json_title: 'JSON Formatter',
+        card_json_desc: 'Format, validate, and beautify your JSON data. Spot errors with syntax highlighting.',
+        card_counter_title: 'Character Counter',
+        card_counter_desc: 'Count characters, words, sentences, and paragraphs in real time.',
+        card_password_title: 'Password Generator',
+        card_password_desc: 'Generate strong, secure passwords with customizable length and options.',
+        card_base64_title: 'Base64 Encoder/Decoder',
+        card_base64_desc: 'Encode or decode Base64 text instantly. Supports Unicode characters.',
+        card_color_title: 'Color Converter',
+        card_color_desc: 'Convert between HEX, RGB, and HSL with live preview and sliders.',
+        footer_copy: '© 2026 devsnap.net. All tools are free and open for everyone.',
+        nav_home: 'Home',
+        nav_image_tools: 'Image Tools',
+        nav_utility_tools: 'Utility Tools',
+        footer_privacy: 'Privacy',
+        footer_terms: 'Terms',
+        footer_feedback: 'Feedback & Requests'
+      },
+      ja: {
+        _pageTitle: 'devsnap.net — 有料ツールの無料代替まとめサイト',
+        _pageDescription: '月額課金のツールはもう要りません。画像背景除去、画像圧縮、QRコード生成など、すべて無料・登録不要で使えます。',
+        hero_badge: '100%無料 — 登録不要',
+        hero_title_html: 'サブスクに払いすぎてない？<br><span class="gradient-text">無料で使えるツール集</span>',
+        hero_subtitle: '高額なサブスクの裏に隠されている機能を、すべて無料で提供。ブラウザ上で完結するから、あなたのファイルは一切外部に送信されません。',
+        hero_cta: '損してないか確認する ↓',
+        calc_title: 'サブスク損益分岐計算ツール',
+        calc_subtitle: '月額課金が本当にお得かどうか、すぐに分かります。',
+        calc_currency_label: '通貨：',
+        calc_service_label: 'サービス名',
+        calc_btn: '損益分岐点を計算する',
+        tools_heading: 'ツールを選ぶ',
+        tools_subheading: 'すべてブラウザ上で動作 — ファイルは一切外部に送信されません。',
+        cat_image: '画像ツール',
+        cat_image_title: '画像加工 — 完全無料',
+        cat_image_desc: '透かしなし、制限なし、登録不要。',
+        card_bg_title: '背景透過（除去）',
+        card_bg_desc: 'AIが画像の背景を瞬時に除去。オフラインで動作し、アップロード不要。',
+        card_compress_title: '画像圧縮',
+        card_compress_desc: '画質を保ちながらファイルサイズを大幅に圧縮。メールやWeb掲載に最適。',
+        card_imgconv_title: '画像形式変換',
+        card_imgconv_desc: 'JPG・PNG・WebP間で変換。複数ファイルの一括変換に対応。',
+        card_open: 'ツールを開く →',
+        cat_utility: 'ユーティリティ',
+        cat_utility_title: '日常に便利なツール',
+        cat_utility_desc: 'よく使う作業をワンクリックで。',
+        card_pdf_title: 'PDF → Word変換',
+        card_pdf_desc: 'PDFからテキストを抽出し、編集可能なWord文書に変換。完全無料。',
+        card_text_title: 'テキスト整形',
+        card_text_desc: '乱れたテキストを瞬時にクリーンアップ。全角半角の統一やスペース削除に対応。',
+        card_csv_title: 'CSV → Excel変換',
+        card_csv_desc: 'CSVをXLSXに瞬時変換。文字コード自動判定で文字化けを解消。',
+        card_qr_title: 'QRコード生成',
+        card_qr_desc: 'テキストやURLからQRコードを生成。PNG形式でダウンロード可能。',
+        card_json_title: 'JSON整形',
+        card_json_desc: 'JSONデータの整形・検証・美化。シンタックスハイライトでエラーを即座に発見。',
+        card_counter_title: '文字カウント',
+        card_counter_desc: '文字数・単語数・文・段落をリアルタイムでカウント。',
+        card_password_title: 'パスワード生成',
+        card_password_desc: '安全で強力なパスワードをカスタマイズして生成。',
+        card_base64_title: 'Base64エンコード/デコード',
+        card_base64_desc: 'Base64テキストの変換を即座に実行。Unicode対応。',
+        card_color_title: 'カラーコード変換',
+        card_color_desc: 'HEX・RGB・HSLを相互変換。スライダーとプレビューで直感操作。',
+        footer_copy: '© 2026 devsnap.net すべてのツールは無料で誰でも利用可能です。',
+        nav_home: 'ホーム',
+        nav_image_tools: '画像ツール',
+        nav_utility_tools: 'ユーティリティ',
+        footer_privacy: 'プライバシー',
+        footer_terms: '利用規約',
+        footer_feedback: 'フィードバック・要望'
+      }
+    };
+  </script>
+  <script src="/js/i18n.js"></script>
 </body>
 
 </html>

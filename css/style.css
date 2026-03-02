@@ -364,6 +364,51 @@ select {
   }
 }
 
+/* --- Language Switcher --- */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: var(--space-md);
+}
+
+.lang-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.05em;
+}
+
+.lang-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--border-hover);
+}
+
+.lang-btn.active {
+  color: var(--accent-secondary);
+  border-color: var(--accent-primary);
+  background: rgba(108, 92, 231, 0.1);
+}
+
+.lang-divider {
+  color: var(--text-muted);
+  font-size: var(--font-size-xs);
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  .lang-switcher {
+    margin-left: 0;
+    margin-top: var(--space-xs);
+  }
+}
+
 
 /* --- Hero Section --- */
 .hero {
